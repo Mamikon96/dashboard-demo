@@ -1,0 +1,8 @@
+<div class="navigation">
+	<ul class="tabs">
+		<app-tab *ngFor="let tab of tabs; trackBy: trackByFn"
+				[class.active]="tab.active"
+				[tab]="tab">
+		</app-tab>
+	</ul>
+</div>
