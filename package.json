@@ -12,14 +12,18 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.14",
+    "@angular/cdk": "^11.2.13",
     "@angular/common": "~11.2.14",
     "@angular/compiler": "~11.2.14",
     "@angular/core": "~11.2.14",
     "@angular/forms": "~11.2.14",
+    "@angular/material": "^11.2.13",
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
-    "rxjs": "~6.6.0",
+    "@ionic/angular": "^5.8.4",
+    "ionicons": "^5.5.3",
+    "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
@@ -40,6 +44,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "@ionic/angular-toolkit": "latest"
   }
 }

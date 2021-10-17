@@ -1,0 +1,13 @@
+<li *ngIf="tab" class="tab">
+	<a [routerLink]="tab.id">
+		<span class="tab__icon-wrapper">
+			<ng-container *ngIf="tab.iconTemplate; else icon" class="tab__icon">
+				{{tab.iconTemplate}}
+			</ng-container>
+			<ng-template #icon>
+				<ion-icon [name]="tab.iconName" class="tab__icon"></ion-icon>
+			</ng-template>
+		</span>
+		<span class="tab__title">{{tab.title}}</span>
+	</a>
+</li>

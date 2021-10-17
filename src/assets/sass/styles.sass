@@ -1,0 +1,141 @@
+@import 'fonts'
+@import 'variables'
+	
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	font-family: 'Poppins', sans-serif
+
+.app-wrapper
+	position: relative
+	height: 100vh
+	overflow-y: auto
+	overflow-x: hidden
+
+.navbar
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	width: 100%
+	height: $header-height
+	z-index: 100
+	background-color: $header-background-color
+	.header
+		width: 100%
+		height: 100%
+		margin: 0
+		padding: 0 12px
+		display: flex
+		align-items: center
+		.logo
+			display: flex
+			text-decoration: none
+			&__icon
+				width: 30px
+				height: 30px
+			&__title
+				color: #fff
+				margin-left: .5rem
+				line-height: 30px
+
+.navigation
+	position: fixed
+	top: $header-height
+	left: 0
+	width: $navigation-width
+	background-color: $navigation-background-color
+	min-height: 100vh
+	box-shadow: 10px 0 0 $navigation-active-color
+	overflow-x: hidden
+	transition: width 0.5s
+	z-index: 100
+	.tabs
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		padding-left: 10px
+		padding-top: 30px
+		list-style: none
+		.active
+			.tab
+				background-color: $navigation-active-color
+				border-top-left-radius: 20px
+				border-bottom-left-radius: 20px
+				&:hover
+					background-color: $navigation-active-color
+		.tab
+			width: 100%
+			display: block
+			list-style: none
+			&__icon-wrapper
+				position: relative
+				display: block
+				min-width: 60px
+				height: 60px
+				line-height: 70px
+				text-align: center
+			&__icon
+				position: relative
+				font-size: 1.5em
+				z-index: 1
+			&__title
+				position: relative
+				display: block
+				padding-left: 10px
+				height: 60px
+				line-height: 60px
+			a
+				position: relative
+				width: 100%
+				display: flex
+				text-decoration: none
+				color: #fff
+			&:hover
+				background-color: $navigation-hover-color
+				border-top-left-radius: 20px
+				border-bottom-left-radius: 20px
+	&:hover
+		width: $navigation-width-expanded
+
+.content
+	position: absolute
+	top: $header-height
+	left: $content-position-left
+	width: $content-width
+	padding: 2vh 3vw
+	display: flex
+	justify-content: center
+	overflow-x: hidden
+	background: $content-background-color
+	h2
+		color: #fff
+		font-size: 2em
+
+
+.dashboard
+	height: calc(100vh - #{$header-height}) //90vh
+
+.users
+	height: 90vh
+
+.error-404
+	height: 90vh
+	flex-direction: column
+	align-items: center
+	// background: #c31432
+	// background: -webkit-linear-gradient(to right, #c31432, #240b36)
+	&__icon-wrapper
+		position: relative
+		display: block
+		margin-top: 10px
+		min-width: 120px
+		height: 120px
+		text-align: center
+	&__icon
+		position: relative
+		font-size: 5em
+		z-index: 1
+		color: #fff
