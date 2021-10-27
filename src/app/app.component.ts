@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Params, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-
 import { Tab } from './models/tab.model';
 import { TabsService } from './services/tabs.service';
+import { LoaderService } from './services/loader.service';
+
 
 
 @Component({
@@ -12,14 +13,18 @@ import { TabsService } from './services/tabs.service';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit, OnDestroy {
-	title = 'Dashboard';
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
-	tabs?: Tab[];
-	tabsSub?: Subscription;
+	public title = 'Dashboard';
+	public tabs?: Tab[];
+	// public isShown$?: Observable<boolean>;
+
+	private tabsSub?: Subscription;
 
 	constructor(private tabsService: TabsService,
-				private router: Router) {
+		private router: Router,
+		private cdr: ChangeDetectorRef,
+		public loaderService: LoaderService) {
 	}
 
 	ngOnInit(): void {
@@ -27,11 +32,40 @@ export class AppComponent implements OnInit, OnDestroy {
 			this.tabs = tabs;
 		})
 		this.router.events.subscribe(event => {
+			let url = null;
 			if (event instanceof NavigationEnd) {
-				this.tabsService.updateActiveTab(event.url.substr(1));
+				url = event.url.substr(1);
 			}
+			switch (true) {
+				case event instanceof NavigationStart: {
+					this.loaderService.show();
+					break;
+				}
+				case event instanceof NavigationEnd: {
+					this.loaderService.hide();
+					this.tabsService.updateActiveTab(url!);
+					break;
+				}
+				case event instanceof NavigationCancel:
+				case event instanceof NavigationError: {
+					this.loaderService.hide();
+					break;
+				}
+				default: {
+					break;
+				}
+			}
+
+
+			// if (event instanceof NavigationEnd) {
+			// 	this.tabsService.updateActiveTab(event.url.substr(1));
+			// }
 		});
-		
+
+	}
+
+	ngAfterViewInit(): void {
+		this.cdr.markForCheck();
 	}
 
 	ngOnDestroy(): void {

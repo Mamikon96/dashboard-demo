@@ -1,5 +1,6 @@
 @import 'fonts'
 @import 'variables'
+@import 'custom-material'
 	
 *
 	margin: 0
@@ -13,6 +14,21 @@
 	overflow-y: auto
 	overflow-x: hidden
 
+.chart
+	width: 300px
+	min-height: 300px
+	// margin-right: 40px
+	// margin-bottom: 30px
+	padding: 10px
+	background-color: #fff
+	border-radius: 10px
+	display: flex
+	flex-direction: column
+	&__title
+	&__content
+		width: 200px
+		height: 200px
+
 .navbar
 	position: fixed
 	top: 0
@@ -20,7 +36,7 @@
 	right: 0
 	width: 100%
 	height: $header-height
-	z-index: 100
+	z-index: 1000
 	background-color: $header-background-color
 	.header
 		width: 100%
@@ -28,6 +44,7 @@
 		margin: 0
 		padding: 0 12px
 		display: flex
+		justify-content: space-between
 		align-items: center
 		.logo
 			display: flex
@@ -39,6 +56,19 @@
 				color: #fff
 				margin-left: .5rem
 				line-height: 30px
+		.menu
+			&-item
+				display: flex
+				text-decoration: none
+				color: #fff
+				&__icon
+					font-size: 1.5em
+					// width: 30px
+					// height: 30px
+				&__title
+					color: #fff
+					margin-left: .5rem
+					line-height: 21px
 
 .navigation
 	position: fixed
@@ -50,7 +80,7 @@
 	box-shadow: 10px 0 0 $navigation-active-color
 	overflow-x: hidden
 	transition: width 0.5s
-	z-index: 100
+	z-index: 1000
 	.tabs
 		position: absolute
 		top: 0
@@ -107,7 +137,7 @@
 	width: $content-width
 	padding: 2vh 3vw
 	display: flex
-	justify-content: center
+	flex-direction: column
 	overflow-x: hidden
 	background: $content-background-color
 	h2
@@ -117,13 +147,32 @@
 
 .dashboard
 	height: calc(100vh - #{$header-height}) //90vh
+	&__title
+	&__content
+		width: 100%
+		display: flex
+		flex-wrap: wrap
+		app-user-info
+			width: 100%
+			margin-bottom: 10px
+			.user-info-wrapper
+			.user-info
+				&__content
+					display: flex
+					justify-content: space-between
+					&-description
+						width: 300px
+						height: 300px
+						padding: 10px
+						background-color: #fff
+						// padding: 10px
 
 .users
 	height: 90vh
 
 .error-404
 	height: 90vh
-	flex-direction: column
+	justify-content: center
 	align-items: center
 	// background: #c31432
 	// background: -webkit-linear-gradient(to right, #c31432, #240b36)
@@ -139,3 +188,19 @@
 		font-size: 5em
 		z-index: 1
 		color: #fff
+
+.spinner
+	height: 90vh
+	justify-content: center
+	align-items: center
+	z-index: 1000
+
+.header-buttons
+	margin: 10px
+	&__btn.mat-raised-button
+		margin-right: 10px
+		&:last-child
+			margin: 0
+
+// .mat-expansion-panel
+// 	width: 100%

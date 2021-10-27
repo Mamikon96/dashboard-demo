@@ -1,0 +1,21 @@
+<mat-accordion class="user-info">
+	<mat-expansion-panel class="user-info-wrapper" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+		<mat-expansion-panel-header class="user-info__header">
+			<mat-panel-title>
+				User Name
+			</mat-panel-title>
+			<mat-panel-description>
+				Used traffic: {{usedTraffic}}%
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+
+		<div class="user-info__content">
+			<div class="user-info__content-chart">
+				<app-chart></app-chart>
+			</div>
+			<div class="user-info__content-description">
+				<p>5.00 Gb / 15 Gb</p>
+			</div>
+		</div>
+	</mat-expansion-panel>
+</mat-accordion>

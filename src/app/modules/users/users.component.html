@@ -1,3 +1,13 @@
 <div class="users content">
 	<h2 class="users__title">Users</h2>
+
+	<mat-card>
+		<app-table-header></app-table-header>
+		<app-table-content *ngIf="curStore === 'localstorage'" appLSStore></app-table-content>
+		<app-table-content *ngIf="curStore === 'database'"></app-table-content>
+		<!-- <ng-template>
+			<app-table-content #tableFromDB></app-table-content>
+		</ng-template> -->
+	</mat-card>
+
 </div>

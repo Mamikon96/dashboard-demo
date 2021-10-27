@@ -8,12 +8,26 @@
 	</div>
   </nav> -->
 
-  <nav class="navbar">
+<nav class="navbar">
 	<div class="header">
 		<a class="logo" href="#">
-		  <img src="../../../assets/icons/logo.png" alt=""
-				  class="logo__icon">
-		  <span *ngIf="title" class="logo__title">{{title}}</span>
+			<img src="../../../assets/icons/logo.png" alt="Logo" class="logo__icon">
+			<span *ngIf="title" class="logo__title">{{title}}</span>
 		</a>
-	  </div>
-  </nav>
+		<div class="menu">
+			<a *ngFor="let item of menuItems; let index = index" class="menu-item" href="#"
+				(click)="clickHandler($event, index)">
+				<!-- <img src="../../../assets/icons/logo.png" [alt]="item" class="menu-item__icon"> -->
+				<!-- <ion-icon name="cloud" class="menu-item__icon"></ion-icon> -->
+				<mat-label *ngIf="title" class="menu-item__title">{{item}}</mat-label>
+				<mat-select (selectionChange)="selectOption($event)">
+					<mat-option *ngFor="let option of menuItemsOperations[item]" [value]="option.id">{{option.value}}</mat-option>
+				</mat-select>
+			</a>
+			<!-- <ng-container *ngIf="isShownDropdown">
+				<mat-label>Choose an option</mat-label>
+				
+			</ng-container> -->
+		</div>
+	</div>
+</nav>

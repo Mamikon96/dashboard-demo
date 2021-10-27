@@ -2,4 +2,5 @@
 	<app-header [title]="title"></app-header>
 	<app-navigation [tabs]="tabs"></app-navigation>
 	<router-outlet></router-outlet>
+	<app-spinner [show]="loaderService.isShown$ | async"></app-spinner>
 </div>
