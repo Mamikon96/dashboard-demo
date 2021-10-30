@@ -4,43 +4,50 @@
 			"id": 1,
 			"name": "User 1",
 			"service": "Skype",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709921
 		},
 		{
 			"id": 1,
 			"name": "User 1",
 			"service": "Youtube",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709120
 		},
 		{
 			"id": 1,
 			"name": "User 1",
 			"service": "Instagram",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709120
 		},
 		{
 			"id": 2,
 			"name": "User 2",
 			"service": "VK",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709120
 		},
 		{
 			"id": 2,
 			"name": "User 2",
 			"service": "Skype",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709120
 		},
 		{
 			"id": 2,
 			"name": "User 2",
 			"service": "Zoom",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709120
 		},
 		{
 			"id": 2,
 			"name": "User 2",
 			"service": "Yotube",
-			"traffic": "1.03 Gb / 5.00 GB"
+			"traffic": 21474836480,
+			"usedTraffic": 5368709120
 		}
 	]
 }

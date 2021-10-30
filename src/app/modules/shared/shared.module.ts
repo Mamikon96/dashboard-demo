@@ -4,11 +4,15 @@ import { MaterialModule } from "../material.module";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { CommonModule } from "@angular/common";
 import { ChartsModule } from "ng2-charts";
+import { TrafficPipe } from './pipes/traffic.pipe';
+import { PercentPipe } from './pipes/percent.pipe';
 
 @NgModule({
 	declarations: [
 		ChartComponent,
-		UserInfoComponent
+		UserInfoComponent,
+		TrafficPipe,
+		PercentPipe
 	],
 	imports: [
 		CommonModule,
@@ -17,7 +21,9 @@ import { ChartsModule } from "ng2-charts";
 	],
 	exports: [
 		ChartComponent,
-		UserInfoComponent
+		UserInfoComponent,
+		TrafficPipe,
+		PercentPipe
 	]
 })
-export class SharedModule {}
+export class SharedModule { }

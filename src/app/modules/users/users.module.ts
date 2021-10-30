@@ -6,8 +6,7 @@ import { MaterialModule } from 'src/app/modules/material.module';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
 import { TableContentComponent } from './components/table-content/table-content.component';
 import { DirectivesModule } from '../directives/directives.module';
-import { LocalStorageUsersService } from './services/localstorage-users.service';
-import { UsersService } from './services/users.service';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -21,7 +20,8 @@ import { UsersService } from './services/users.service';
 		CommonModule,
 		UsersRoutingModule,
 		MaterialModule,
-		DirectivesModule
+		DirectivesModule,
+		SharedModule
 	],
 	exports: [
 		UsersComponent

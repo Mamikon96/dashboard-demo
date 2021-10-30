@@ -40,7 +40,7 @@
 		<!-- Traffic Column -->
         <ng-container matColumnDef="traffic">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Traffic</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.traffic}}</mat-cell>
+            <mat-cell *matCellDef="let element">{{element.traffic | traffic}}</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

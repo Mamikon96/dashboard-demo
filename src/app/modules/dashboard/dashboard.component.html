@@ -2,12 +2,6 @@
 	<h2 class="dashboard__title">Dashboard</h2>
 
 	<div class="dashboard__content">
-		<!-- <app-chart [title]="'User 1'"></app-chart> -->
-		<!-- <app-chart [title]="'User 2'"></app-chart> -->
-		<!-- <app-chart [title]="'User 3'"></app-chart> -->
-		<!-- <app-chart [title]="'User 4'"></app-chart> -->
-
-		<app-user-info></app-user-info>
-		<app-user-info></app-user-info>
+		<app-user-info *ngFor="let user of users" [user]="user"></app-user-info>
 	</div>
 </div>

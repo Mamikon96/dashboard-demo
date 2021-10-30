@@ -36,7 +36,8 @@ export class TableContentComponent implements OnInit, AfterViewInit {
 					position: i + 1,
 					name: data[i].name,
 					service: data[i].service,
-					traffic: data[i].traffic
+					traffic: data[i].traffic,
+					usedTraffic: data[i].usedTraffic
 				});
 			}
 			this.updateTable(usersTemp);

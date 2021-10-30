@@ -2,5 +2,6 @@ export interface User {
 	id: number;
 	name: string;
 	service: string;
-	traffic: string;
+	traffic: number;
+	usedTraffic: number;
 }
