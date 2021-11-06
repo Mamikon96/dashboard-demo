@@ -194,9 +194,8 @@
 		background-color: darkgrey
 		-webkit-border-radius: 10px
 		// outline: 1px solid slategrey
+
 .content
-	
-	// padding: 60px 10px 10px 90px
 	display: flex
 	flex-direction: column
 	overflow-x: hidden
@@ -239,6 +238,29 @@
 								width: 49%
 							&-value
 								width: 49%
+
+.settings
+	// height: calc(100vh - #{$header-height}) //90vh
+	&__title
+	&__content
+		width: 100%
+		min-height: 100px
+		padding: 20px
+		background-color: #fff
+		border-radius: 5px
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		&-item-wrapper
+			display: flex
+			align-items: center
+		&-item
+			display: flex
+			// align-items: center
+			height: 30px
+			&__key
+			&__value
+				margin-left: 20px
 
 .users
 	// height: 90vh

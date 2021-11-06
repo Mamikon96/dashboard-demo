@@ -1,0 +1,33 @@
+<div class="content-wrapper">
+	<div class="settings content">
+		<h2 class="settings__title">Settings</h2>
+
+		<div class="settings__content">
+			<div class="settings__content-item">
+				<div class="settings__content-item-wrapper">
+					<div class="settings__content-item__key">
+						<p>Enable alerts: </p>
+					</div>
+					<div class="settings__content-item__value">
+						<mat-slide-toggle [(ngModel)]="isAlertEnabled"
+											(change)="enableAlertHandler($event)"
+						></mat-slide-toggle>
+					</div>
+				</div>
+			</div>
+
+			<div class="settings__content-item">
+				<div class="settings__content-item-wrapper">
+					<div class="settings__content-item__key">
+						<p>Enable notifications: </p>
+					</div>
+					<div class="settings__content-item__value">
+						<mat-slide-toggle [(ngModel)]="isNotificationEnabled"
+											(change)="enableNotificationHandler($event)"
+						></mat-slide-toggle>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

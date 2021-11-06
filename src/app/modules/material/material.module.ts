@@ -16,6 +16,7 @@ import { MatOptionModule } from "@angular/material/core";
 import { MatExpansionModule } from "@angular/material/expansion"
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 		MatOptionModule,
 		MatExpansionModule,
 		MatTabsModule,
-		MatBadgeModule
+		MatBadgeModule,
+		MatSlideToggleModule
 	],
 	exports: [
 		MatTableModule,
@@ -54,7 +56,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 		MatOptionModule,
 		MatExpansionModule,
 		MatTabsModule,
-		MatBadgeModule
+		MatBadgeModule,
+		MatSlideToggleModule
 	]
 })
 export class MaterialModule { }

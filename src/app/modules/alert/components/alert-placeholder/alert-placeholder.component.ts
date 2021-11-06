@@ -1,6 +1,18 @@
-import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef, OnDestroy, Input, ChangeDetectorRef, SimpleChange } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {
+	Component,
+	ComponentFactory,
+	ComponentFactoryResolver,
+	ComponentRef,
+	OnInit,
+	ViewChild,
+	ViewContainerRef,
+	OnDestroy,
+	Input,
+	SimpleChange
+} from '@angular/core';
+import { combineLatest, Subject, Subscription } from 'rxjs';
 import { Alert, AlertService } from '../../services/alert.service';
+import { AlertsVisibilityService } from '../../services/alerts-visibility.service';
 import { AlertComponent } from './../alert/alert.component';
 
 @Component({
@@ -16,22 +28,29 @@ export class AlertPlaceholderComponent implements OnInit, OnDestroy {
 	@ViewChild("alertContainer", { read: ViewContainerRef }) container!: ViewContainerRef;
 
 	public componentRefs: ComponentRef<AlertComponent>[] = [];
-	private alertSub!: Subscription;
+	private alertSub!: Subject<Alert>;
+	private alertsVisibilitySub!: Subject<boolean>;
 	private alertComponentsMap: Map<Alert, ComponentRef<AlertComponent>> = new Map();
 
 
-	constructor(private alertService: AlertService,
-				private resolver: ComponentFactoryResolver,
-				private cdr: ChangeDetectorRef) { }
+	constructor(public alertsVisibility: AlertsVisibilityService,
+				private alertService: AlertService,
+				private resolver: ComponentFactoryResolver
+	) { }
 
 	ngOnInit(): void {
-		this.alertSub = this.alertService.alert$.subscribe((alert: Alert) => {
-			this.handleAlertEvent(alert);
-			// this.createAlert(alert);
-			// const timeout = setTimeout(() => {
-			//     clearTimeout(timeout);
-			// 	// this.componentRef.destroy();
-			// }, this.delay);
+		this.alertSub = this.alertService.alert$;
+		this.alertsVisibilitySub = this.alertsVisibility.isShownAlerts$;//.subscribe((isShown: boolean) => {});
+
+		combineLatest(
+			this.alertSub,
+			this.alertsVisibilitySub
+		).subscribe(([alert, isShown]) => {
+			console.log(isShown, alert);
+			
+			if (isShown) {
+				this.handleAlertEvent(alert);
+			}
 		});
 	}
 

@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges, ViewChild, ViewEncapsulation, AfterViewInit, OnDestroy } from '@angular/core';
 import { Notification } from './../../models/notification.model';
 import { EventEmitter } from '@angular/core';
+import { NotificationsVisibilityService } from '../../services/notifications-visibility.service';
 
 @Component({
 	selector: 'app-notifications-list',
@@ -21,6 +22,10 @@ export class NotificationsListComponent implements OnInit, OnChanges, AfterViewI
 	constructor(private r2: Renderer2) { }
 
 
+	/**
+	 * Hooks
+	 */
+
 	ngOnChanges(changes: SimpleChanges): void {
 		console.log(changes);
 		
@@ -36,6 +41,11 @@ export class NotificationsListComponent implements OnInit, OnChanges, AfterViewI
 	ngOnDestroy(): void {
 		this.unlistener();
 	}
+
+
+	/**
+	 * Handlers
+	 */
 
 	deleteHandler(notification: Notification): void {
 		console.log(notification);

@@ -1,3 +1,5 @@
-<div class="alert-wrap" [class.hide]="!componentRefs.length">
-	<ng-template #alertContainer></ng-template>
-</div>
+<ng-container [class.hide]="alertsVisibility.isShownAlerts$ | async">
+	<div class="alert-wrap" [class.hide]="!componentRefs.length">
+		<ng-template #alertContainer></ng-template>
+	</div>
+</ng-container>

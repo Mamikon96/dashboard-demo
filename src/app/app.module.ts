@@ -49,7 +49,7 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
 		// DashboardModule,
 		SharedModule,
 		AlertModule.forRoot(),
-		NotificationsModule
+		NotificationsModule.forRoot()
 		// ChartsModule
 	],
 	providers: [

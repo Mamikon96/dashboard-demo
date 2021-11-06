@@ -16,14 +16,18 @@
 		</a>
 		<div class="menu">
 			<a *ngFor="let item of menuItems; let index = index" class="menu-item" href="#"
-				(click)="clickHandler($event, index)">
+				(click)="storeClickHandler($event, index)">
 				<mat-label *ngIf="title" class="menu-item__title">{{item}}</mat-label>
-				<mat-select (selectionChange)="selectOption($event)">
+				<mat-select (selectionChange)="selectStoreOption($event)">
 					<mat-option *ngFor="let option of menuItemsOperations[item]" [value]="option.id">{{option.value}}
 					</mat-option>
 				</mat-select>
 			</a>
-			<a href="#" class="menu-item" (click)="notificationsClickHandler($event)">
+			<a href="#"
+				*ngIf="notificationsVisibility.isShownNotifications$ | async"
+				class="menu-item"
+				(click)="notificationsClickHandler($event)">
+
 				<span *ngIf="notifications.length; else icon"
 						[matBadge]="notifications.length"
 						matBadgeOverlap="true"

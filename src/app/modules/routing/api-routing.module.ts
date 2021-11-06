@@ -24,6 +24,11 @@ const routes: Routes = [
 				canActivate: [AuthGuard]
 			},
 			{ 
+				path: 'settings',
+				loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule),
+				canActivate: [AuthGuard]
+			},
+			{ 
 				path: 'errorPage',
 				loadChildren: () => import('../page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
 			},
