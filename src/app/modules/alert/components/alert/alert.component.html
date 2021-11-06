@@ -1,0 +1,11 @@
+
+	<div class="alert" [class.hide]="isHidden" #alertRef>
+		<div class="alert-type" [ngClass]="{
+			'alert-success': alert.type === 'success',
+			'alert-warning': alert.type === 'warning',
+			'alert-danger': alert.type === 'danger'
+		}"></div>
+		<div class="alert-description">
+			<p>{{ alert.text }}</p>
+		</div>
+	</div>

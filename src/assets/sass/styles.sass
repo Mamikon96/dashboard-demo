@@ -1,6 +1,7 @@
 @import 'fonts'
 @import 'variables'
 @import 'custom-material'
+@import 'css-variables'
 	
 *
 	margin: 0
@@ -28,6 +29,29 @@
 	&__content
 		width: 200px
 		height: 200px
+
+.icon
+	font-size: 1.5em
+
+.form
+	display: flex
+	flex-direction: column
+	// margin: 20% auto
+	width: 80%
+	/*height: 200px;*/
+	min-height: 60%
+	background-color: #ffffff
+	position: absolute
+	top: 20%
+	left: 10%
+	border: 2px solid #D4D4D4
+	border-radius: 50px
+	/*box-shadow: 0 0 15px #0099FF;*/
+	box-shadow: 0 0 15px #A9A9A9
+	padding:20px 40px
+	justify-content: center
+	align-items: center
+	overflow: hidden
 
 .navbar
 	position: fixed
@@ -57,14 +81,18 @@
 				margin-left: .5rem
 				line-height: 30px
 		.menu
+			display: flex
 			&-item
 				display: flex
+				align-items: center
+				margin-left: 20px
 				text-decoration: none
 				color: #fff
+				.icon-wrapper
+					display: flex
+					align-items: center
 				&__icon
 					font-size: 1.5em
-					// width: 30px
-					// height: 30px
 				&__title
 					color: #fff
 					margin-left: .5rem
@@ -130,23 +158,56 @@
 	&:hover
 		width: $navigation-width-expanded
 
-.content
+.background-placeholder
 	position: absolute
-	top: $header-height
-	left: $content-position-left
-	width: $content-width
-	padding: 2vh 3vw
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	// width: 100%
+	// height: 100%
+	overflow: hidden
+	background: $content-background-color
+
+.content-wrapper
+	position: absolute
+	// top: $header-height
+	top: 0
+	// left: $content-position-left
+	left: 0
+	// width: $content-width
+	width: 90vw
+	// height: 90vh
+	height: calc( 100vh - 60px )
+	// padding: 12vh 3vw 2vh 13vw
+	margin-top: 60px
+	margin-left: 90px
+	padding: 10px
+	overflow-y: scroll
+	&::-webkit-scrollbar
+		width: 10px
+	&::-webkit-scrollbar-track
+		-webkit-border-top-right-radius: 10px
+		-webkit-border-bottom-right-radius: 10px
+		// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+	&::-webkit-scrollbar-thumb
+		background-color: darkgrey
+		-webkit-border-radius: 10px
+		// outline: 1px solid slategrey
+.content
+	
+	// padding: 60px 10px 10px 90px
 	display: flex
 	flex-direction: column
 	overflow-x: hidden
-	background: $content-background-color
+	// background: $content-background-color
 	h2
 		color: #fff
 		font-size: 2em
 
 
 .dashboard
-	height: calc(100vh - #{$header-height}) //90vh
+	// height: calc(100vh - #{$header-height}) //90vh
 	&__title
 	&__content
 		width: 100%
@@ -180,10 +241,10 @@
 								width: 49%
 
 .users
-	height: 90vh
+	// height: 90vh
 
 .error-404
-	height: 90vh
+	// height: 90vh
 	justify-content: center
 	align-items: center
 	// background: #c31432
@@ -202,7 +263,8 @@
 		color: #fff
 
 .spinner
-	height: 90vh
+	// height: 90vh
+	height: 100vh
 	justify-content: center
 	align-items: center
 	z-index: 1000
@@ -216,3 +278,41 @@
 
 // .mat-expansion-panel
 // 	width: 100%
+
+.login
+	position: relative
+	width: 100vw
+	height: 100vh
+	background: $content-background-color
+	.app
+		&-name
+			position: absolute
+			top: 20%
+			left: 30%
+			transform: translateX(-50%)
+			width: 45vw
+
+			color: #fff
+			font-size: 6em
+			font-weight: 700
+			text-transform: capitalize
+		&-bg-placeholder
+			position: absolute
+			width: 70vw
+			height: 100vh
+			bottom: 0
+			left: 0
+			right: 0
+			background: url('../images/bg/app.jpg') center (center / cover) no-repeat
+			opacity: 0.1
+			box-shadow: 0 0 15px #331432, 0 0 25px #331432, 0 0 35px #331432
+	&-form-wrapper
+		position: absolute
+		right: 0
+		width: 30%
+		height: 100vh
+		background-color: #fff
+		padding: 30px
+		
+app-root app-header .notifications-list
+	// --bg-color: rgba(27, 140, 151, 1)

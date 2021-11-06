@@ -1,6 +1,6 @@
 <div class="app-wrapper">
-	<app-header [title]="title"></app-header>
-	<app-navigation [tabs]="tabs"></app-navigation>
-	<router-outlet></router-outlet>
 	<app-spinner [show]="loaderService.isShown$ | async"></app-spinner>
+	<router-outlet></router-outlet>
 </div>
+
+<app-alert-placeholder [delay]="3000"></app-alert-placeholder>

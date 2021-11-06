@@ -1,0 +1,33 @@
+.alert
+	position: absolute
+	opacity: 1
+	margin-top: .5rem
+	display: flex
+	left: 0
+	right: 0
+	transition: top .6s ease-out
+	&.hide
+		top: -60px
+		opacity: 0
+		transition: opacity 1.5s
+	.alert-type
+		// margin: 1rem 0
+		flex-grow: 1
+		&.alert
+			&-success
+				background: var(--success-color)
+				color: #fff
+			&-warning
+				background: var(--warning-color)
+				color: #fff
+			&-danger
+				background: var(--danger-color)
+				color: #fff
+	.alert-description
+		padding: 0.7rem
+		// margin: 1rem 0
+		// opacity: 1
+		background: var(--dark-color)
+		color: #fff
+		flex-grow: 10
+		height: 100%

@@ -1,0 +1,14 @@
+<div class="notification" *ngIf="notification">
+	<div class="notification__type" [ngClass]="{
+		'notification__type_success': notification.color === 'success',
+		'notification__type_warning': notification.color === 'warning',
+		'notification__type_danger': notification.color === 'danger'
+	}"></div>
+	<div class="notification__body">
+		<div class="notification__body-header">{{notification.type}}</div>
+		<div class="notification__body-text">{{notification.text}}</div>
+	</div>
+	<div class="notification__close" #closeBtn>
+		<span class="notification__close-text">&#10006;</span>
+	</div>
+</div>

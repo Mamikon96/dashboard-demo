@@ -14,6 +14,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from "@angular/material/select";
 import { MatOptionModule } from "@angular/material/core";
 import { MatExpansionModule } from "@angular/material/expansion"
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { MatExpansionModule } from "@angular/material/expansion"
 		MatDialogModule,
 		MatSelectModule,
 		MatOptionModule,
-		MatExpansionModule
+		MatExpansionModule,
+		MatTabsModule,
+		MatBadgeModule
 	],
 	exports: [
 		MatTableModule,
@@ -48,7 +52,9 @@ import { MatExpansionModule } from "@angular/material/expansion"
 		MatDialogModule,
 		MatSelectModule,
 		MatOptionModule,
-		MatExpansionModule
+		MatExpansionModule,
+		MatTabsModule,
+		MatBadgeModule
 	]
 })
 export class MaterialModule { }

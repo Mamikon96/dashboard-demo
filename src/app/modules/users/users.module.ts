@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { UsersRoutingModule } from './users-routing.module';
-import { MaterialModule } from 'src/app/modules/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
 import { TableContentComponent } from './components/table-content/table-content.component';
 import { DirectivesModule } from '../directives/directives.module';
@@ -19,7 +19,6 @@ import { SharedModule } from '../shared/shared.module';
 	imports: [
 		CommonModule,
 		UsersRoutingModule,
-		MaterialModule,
 		DirectivesModule,
 		SharedModule
 	],

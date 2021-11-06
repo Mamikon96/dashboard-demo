@@ -1,0 +1,24 @@
+
+		<div class="form" [formGroup]="_form">
+			<h2 mat-dialog-title>{{_title}}</h2>
+
+			<div class="login-form-item">
+
+				<!--  UserName-->
+				<mat-form-field>
+					<input matInput placeholder="Username" formControlName="username" required autocomplete="off">
+				</mat-form-field>
+			</div>
+			<div class="login-form-item">
+				<!--  Password-->
+				<mat-form-field>
+					<input matInput placeholder="Password" formControlName="password" required type="password">
+				</mat-form-field>
+
+				<!--    <p class="error-message" *ngIf="_showError">Data is not added!</p>-->
+			</div>
+			<div>
+				<button mat-raised-button color="primary" (click)="login()">Login
+				</button>
+			</div>
+		</div>

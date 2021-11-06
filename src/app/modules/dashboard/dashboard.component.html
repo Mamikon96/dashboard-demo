@@ -1,7 +1,9 @@
-<div class="dashboard content">
-	<h2 class="dashboard__title">Dashboard</h2>
+<div class="content-wrapper">
+	<div class="dashboard content">
+		<h2 class="dashboard__title">Dashboard</h2>
 
-	<div class="dashboard__content">
-		<app-user-info *ngFor="let user of users" [user]="user"></app-user-info>
+		<div class="dashboard__content">
+			<app-user-info *ngFor="let user of users" [user]="user"></app-user-info>
+		</div>
 	</div>
 </div>

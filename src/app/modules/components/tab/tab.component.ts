@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { Tab } from 'src/app/models/tab.model';
-import { TabsService } from './../../services/tabs.service';
+import { TabsService } from '../../../services/tabs.service';
 
 @Component({
 	selector: 'app-tab',

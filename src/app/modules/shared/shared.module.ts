@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { ChartComponent } from "src/app/modules/shared/components/chart/chart.component";
-import { MaterialModule } from "../material.module";
+import { MaterialModule } from "../material/material.module";
 import { UserInfoComponent } from "./components/user-info/user-info.component";
 import { CommonModule } from "@angular/common";
 import { ChartsModule } from "ng2-charts";
@@ -23,7 +23,8 @@ import { PercentPipe } from './pipes/percent.pipe';
 		ChartComponent,
 		UserInfoComponent,
 		TrafficPipe,
-		PercentPipe
+		PercentPipe,
+		MaterialModule
 	]
 })
 export class SharedModule { }
