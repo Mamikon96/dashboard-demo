@@ -33,13 +33,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
 
 	enableAlertHandler(event: MatSlideToggleChange): void {
-		console.log(event.checked);
 		// this.isChecked = event.checked;
 		this.alertsVisibility.showAlerts(event.checked);
 	}
 
 	enableNotificationHandler(event: MatSlideToggleChange): void {
-		console.log(event.checked);
 		// this.isChecked = event.checked;
 		this.notificationsVisibility.showNotifications(event.checked);
 	}

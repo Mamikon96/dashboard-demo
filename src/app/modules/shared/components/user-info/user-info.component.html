@@ -4,16 +4,20 @@
 						(closed)="panelOpenState = false">
 		<mat-expansion-panel-header class="user-info__header">
 			<mat-panel-title>
-				User Name
+				<span class="user-info__header-title-key">User:</span>
+				<span class="user-info__header-title-value"> {{ user.name }} </span>
 			</mat-panel-title>
 			<mat-panel-description>
-				Used traffic: {{ user.usedTraffic! | percent:user.traffic! }}%
+				<span class="user-info__header-meta-key">Used traffic:</span>
+				<span class="user-info__header-meta-value"
+					[appTreshold]="usedTrafficByUserInPercent"
+				> {{ user.usedTraffic! | percent:user.traffic! }}% </span>
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 
 		<div *ngIf="panelOpenState" class="user-info__content">
 			<div class="user-info__content-chart user-info__content-item">
-				<app-chart [type]="chartType"></app-chart>
+				<app-chart [type]="chartType" [user]="user"></app-chart>
 			</div>
 			<div class="user-info__content-description user-info__content-item">
 				<div class="user-info__content-description-item">

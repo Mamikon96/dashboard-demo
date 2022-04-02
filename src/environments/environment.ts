@@ -6,6 +6,7 @@ export const environment = {
 	production: false,
 	backendApi: "http://localhost:3000",
 	usersEndpoint: "/users",
+	// usersEndpoint: "/users2",
 	secret: 'lime',
 	salt: 10
 

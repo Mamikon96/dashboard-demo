@@ -23,6 +23,7 @@ import { AuthService } from './services/auth.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { AlertModule } from './modules/alert/alert.module';
 import { NotificationsModule } from './modules/notifications/notifications.module';
+import { TresholdDirective } from './modules/shared/directives/treshold.directive';
 
 
 @NgModule({

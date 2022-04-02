@@ -3,8 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserDataSource } from '../../models/user-data-source.model';
-import { User } from '../../models/user.model';
-import { UsersService } from '../../services/users.service';
+import { User, UsersService } from '../../services/users.service';
 
 @Component({
 	selector: 'app-table-content',

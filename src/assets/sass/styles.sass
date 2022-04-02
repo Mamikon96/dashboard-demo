@@ -217,6 +217,28 @@
 			margin-bottom: 10px
 			.user-info-wrapper
 			.user-info
+				&__header
+					&-title
+						&-key
+							display: flex
+							align-items: center
+							margin-right: 10px
+						&-value
+							display: flex
+							align-items: center
+							font-size: 1.2em
+							font-weight: 700
+					&-meta
+						&-key
+							margin-right: 10px
+						&-value
+							color: green
+							&_danger
+								color: red
+							&_warning
+								color: #f6c111
+							&_success
+								color: yellowgreen
 				&__content
 					display: flex
 					min-height: 300px
@@ -253,7 +275,9 @@
 		flex-wrap: wrap
 		&-item-wrapper
 			display: flex
+			justify-content: space-between
 			align-items: center
+			width: 230px
 		&-item
 			display: flex
 			// align-items: center

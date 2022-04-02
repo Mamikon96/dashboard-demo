@@ -1,6 +1,8 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { ChartColor, ChartOptions, ChartType } from "chart.js";
 import { Color, Label, SingleDataSet, SingleOrMultiDataSet } from "ng2-charts";
+import { filter } from "rxjs/operators";
+import { User, UsersService } from "../../users/services/users.service";
 
 
 export interface ChartConfiguration {
@@ -20,17 +22,50 @@ export interface ChartConfiguration {
 })
 export class ChartManagerService {
 
+	constructor(private usersService: UsersService) {}
 
-	public getChartConfiguration(chartType: ChartType): ChartConfiguration {
+
+	// public getChartConfiguration(chartType: ChartType): ChartConfiguration {
+	// 	return {
+	// 		labels: this.getLabels(chartType),
+	// 		data: this.getData(chartType),
+	// 		options: this.getOptions(chartType),
+	// 		colors: this.getColors(chartType)
+	// 	};
+	// }
+
+	public getChartConfiguration(chartType: ChartType, userId?: number): ChartConfiguration {
 		return {
-			labels: this.getLabels(chartType),
+			labels: this.getLabels(chartType, userId),
 			data: this.getData(chartType),
 			options: this.getOptions(chartType),
 			colors: this.getColors(chartType)
 		};
 	}
 
-	private getLabels(chartType: ChartType): Label[] {
+	// private getLabels(chartType: ChartType): Label[] {
+	// 	let labels: Label[] = [];
+	// 	if (chartType === 'pie') {
+	// 		labels = ['Skype', 'Youtube', 'Telegram', 'Zoom'];
+	// 	} else if (chartType === 'doughnut') {
+	// 		labels = ['Skype', 'Youtube', 'Instagram'];
+	// 	}
+
+	// 	return labels;
+	// }
+
+	private getLabels(chartType: ChartType, userId?: number): Label[] {
+		console.log(`user id: ${userId}`);
+		const services: string[] = [];
+		this.usersService.getUsers()
+			.subscribe((users: User[]) => {
+				users.forEach((user: User) => {
+					if (user.id === userId && user.service) {
+						services.push(user.service);
+					}
+				});
+			});
+		
 		let labels: Label[] = [];
 		if (chartType === 'pie') {
 			labels = ['Skype', 'Youtube', 'Telegram', 'Zoom'];
@@ -38,7 +73,7 @@ export class ChartManagerService {
 			labels = ['Skype', 'Youtube', 'Instagram'];
 		}
 
-		return labels;
+		return services;
 	}
 
 	private getData(chartType: ChartType): SingleDataSet {

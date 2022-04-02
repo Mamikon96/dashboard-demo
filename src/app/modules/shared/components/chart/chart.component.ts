@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, ChangeDetectorRef } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { BaseChartDirective, Label, SingleDataSet } from 'ng2-charts';
+import { User } from 'src/app/modules/users/services/users.service';
 // import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartManagerService } from '../../services/chart-manager.service';
 
@@ -14,6 +15,7 @@ import { ChartConfiguration, ChartManagerService } from '../../services/chart-ma
 export class ChartComponent implements OnInit, AfterViewInit {
 
 	@Input() type!: ChartType;
+	@Input() user!: User;
 
 	@Input() title!: string;
 	// @Input() data!: ChartData;
@@ -51,7 +53,7 @@ export class ChartComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit(): void {
-		this.chartConfig = this.chartService.getChartConfiguration(this.type);
+		this.chartConfig = this.chartService.getChartConfiguration(this.type, this.user.id);
 	}
 
 	// private initChartData(): void {

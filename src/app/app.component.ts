@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 		this.router.events.subscribe(event => {
 			let url = null;
 			if (event instanceof NavigationEnd) {
-				url = event.url.substr(1);
+				url = event.url.substring(event.url.lastIndexOf('/') + 1);
 			}
 			switch (true) {
 				case event instanceof NavigationStart: {

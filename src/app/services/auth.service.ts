@@ -1,6 +1,5 @@
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
-import { UsersService } from '../modules/users/services/users.service';
-import { User } from './../modules/users/models/user.model';
+import { User, UsersService } from '../modules/users/services/users.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { AuthModule } from '../modules/auth/auth.module';
 

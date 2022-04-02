@@ -42,11 +42,11 @@ export class AlertPlaceholderComponent implements OnInit, OnDestroy {
 		this.alertSub = this.alertService.alert$;
 		this.alertsVisibilitySub = this.alertsVisibility.isShownAlerts$;//.subscribe((isShown: boolean) => {});
 
-		combineLatest(
+		combineLatest([
 			this.alertSub,
 			this.alertsVisibilitySub
-		).subscribe(([alert, isShown]) => {
-			console.log(isShown, alert);
+		]).subscribe(([alert, isShown]) => {
+			// console.log(isShown, alert);
 			
 			if (isShown) {
 				this.handleAlertEvent(alert);
@@ -57,6 +57,7 @@ export class AlertPlaceholderComponent implements OnInit, OnDestroy {
 	ngOnDestroy(): void {
 		// this.componentRef.destroy();
 		this.alertSub && this.alertSub.unsubscribe();
+		this.alertsVisibilitySub && this.alertsVisibilitySub.unsubscribe();
 	}
 
 	private handleAlertEvent(alert: Alert): void {

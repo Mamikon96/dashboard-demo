@@ -29,7 +29,7 @@ export class ApiLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 		this.router.events.subscribe(event => {
 			let url = null;
 			if (event instanceof NavigationEnd) {
-				url = event.url.substr(1);
+				url = event.url.substring(event.url.lastIndexOf('/') + 1);
 			}
 			switch (true) {
 				case event instanceof NavigationStart: {
@@ -39,6 +39,7 @@ export class ApiLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 				case event instanceof NavigationEnd: {
 					this.loaderService.hide();
 					this.tabsService.updateActiveTab(url!);
+					console.log(`mako 2 url: ${url}`);
 					break;
 				}
 				case event instanceof NavigationCancel:

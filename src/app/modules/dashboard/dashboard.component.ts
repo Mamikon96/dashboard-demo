@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UsersService } from './../users/services/users.service';
+import { User, UsersService } from './../users/services/users.service';
 import { Subscription } from 'rxjs';
-import { User } from './../users/models/user.model';
 
 @Component({
 	selector: 'app-dashboard',

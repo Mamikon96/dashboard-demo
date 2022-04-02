@@ -6,13 +6,15 @@ import { CommonModule } from "@angular/common";
 import { ChartsModule } from "ng2-charts";
 import { TrafficPipe } from './pipes/traffic.pipe';
 import { PercentPipe } from './pipes/percent.pipe';
+import { TresholdDirective } from "./directives/treshold.directive";
 
 @NgModule({
 	declarations: [
 		ChartComponent,
 		UserInfoComponent,
 		TrafficPipe,
-		PercentPipe
+		PercentPipe,
+		TresholdDirective
 	],
 	imports: [
 		CommonModule,
@@ -24,6 +26,7 @@ import { PercentPipe } from './pipes/percent.pipe';
 		UserInfoComponent,
 		TrafficPipe,
 		PercentPipe,
+		TresholdDirective,
 		MaterialModule
 	]
 })

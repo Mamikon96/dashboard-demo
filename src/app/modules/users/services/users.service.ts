@@ -1,8 +1,33 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from "../models/user.model";
 import { environment } from './../../../../environments/environment';
+import { Service } from "./services.service";
+
+
+
+// export interface User {
+// 	id?: number;
+// 	name?: string;
+// 	services: Service[];
+// 	username?: string;
+//     password?: string;
+//     email?: string;
+// 	phone?: string;
+// }
+
+export interface User {
+	id?: number;
+	name?: string;
+	service?: string;
+	traffic?: number;
+	usedTraffic?: number;
+	username?: string;
+    password?: string;
+    email?: string;
+	phone?: string;
+}
+
 
 @Injectable({
 	providedIn: 'root'

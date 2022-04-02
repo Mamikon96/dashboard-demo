@@ -1,26 +1,46 @@
 {
+	"services": [
+		{ "id": 1, "name": "Skype", "usedTraffic": 12121, "traffic": 121212 }
+	],
+	"users2": [
+		{
+			"id": 1,
+			"name": "Mamikon",
+			"service": "Skype",
+			"traffic": 21474836480,
+			"usedTraffic": 15368709921,
+			"username": "mamikon",
+			"password": "123",
+			"services": [
+				{ "id": 1, "name": "Skype", "usedTraffic": 12121, "traffic": 121212 },
+				{ "id": 2, "name": "Youtube", "usedTraffic": 22121, "traffic": 121212 },
+				{ "id": 3, "name": "Instagram", "usedTraffic": 32121, "traffic": 121212 },
+				{ "id": 4, "name": "VK", "usedTraffic": 42121, "traffic": 121212 }
+			]
+		}
+	],
 	"users": [
 		{
 			"id": 1,
-			"name": "User 1",
+			"name": "Mamikon",
 			"service": "Skype",
 			"traffic": 21474836480,
-			"usedTraffic": 5368709921,
+			"usedTraffic": 15368709921,
 			"username": "user1",
 			"password": "123"
 		},
 		{
 			"id": 1,
-			"name": "User 1",
+			"name": "Mamikon",
 			"service": "Youtube",
 			"traffic": 21474836480,
-			"usedTraffic": 5368709120,
+			"usedTraffic": 18368709120,
 			"username": "user2",
 			"password": "123"
 		},
 		{
 			"id": 1,
-			"name": "User 1",
+			"name": "Mamikon",
 			"service": "Instagram",
 			"traffic": 21474836480,
 			"usedTraffic": 5368709120,
@@ -29,7 +49,7 @@
 		},
 		{
 			"id": 2,
-			"name": "User 2",
+			"name": "Ivan",
 			"service": "VK",
 			"traffic": 21474836480,
 			"usedTraffic": 5368709120,
@@ -38,7 +58,7 @@
 		},
 		{
 			"id": 2,
-			"name": "User 2",
+			"name": "Ivan",
 			"service": "Skype",
 			"traffic": 21474836480,
 			"usedTraffic": 5368709120,
@@ -47,7 +67,7 @@
 		},
 		{
 			"id": 2,
-			"name": "User 2",
+			"name": "Ivan",
 			"service": "Zoom",
 			"traffic": 21474836480,
 			"usedTraffic": 5368709120,
@@ -56,7 +76,7 @@
 		},
 		{
 			"id": 2,
-			"name": "User 2",
+			"name": "Ivan",
 			"service": "Yotube",
 			"traffic": 21474836480,
 			"usedTraffic": 5368709120,
