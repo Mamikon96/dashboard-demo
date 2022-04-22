@@ -19,7 +19,7 @@ export class TabComponent implements OnInit {
 
 	@HostListener('click')
 	hoverHandler(): void {
-		this.tabsService.updateActiveTab(this.tab.id);
+		this.tabsService.updateActiveTab(this.tab.path);
 	}
 
 }

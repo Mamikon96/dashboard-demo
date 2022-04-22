@@ -7,6 +7,10 @@ import { ChartsModule } from "ng2-charts";
 import { TrafficPipe } from './pipes/traffic.pipe';
 import { PercentPipe } from './pipes/percent.pipe';
 import { TresholdDirective } from "./directives/treshold.directive";
+import { ChartDirective } from "./directives/chart.directive";
+import { RouterModule } from "@angular/router";
+import { ChartService } from "./services/chart.service";
+import { ChartWrapperComponent } from './components/chart-wrapper/chart-wrapper.component';
 
 @NgModule({
 	declarations: [
@@ -14,20 +18,26 @@ import { TresholdDirective } from "./directives/treshold.directive";
 		UserInfoComponent,
 		TrafficPipe,
 		PercentPipe,
-		TresholdDirective
+		TresholdDirective,
+		ChartDirective,
+  		ChartWrapperComponent
 	],
 	imports: [
 		CommonModule,
 		MaterialModule,
-		ChartsModule
+		ChartsModule,
+		RouterModule
 	],
 	exports: [
 		ChartComponent,
+		ChartWrapperComponent,
 		UserInfoComponent,
 		TrafficPipe,
 		PercentPipe,
 		TresholdDirective,
+		ChartDirective,
 		MaterialModule
-	]
+	],
+	providers: [ChartService]
 })
 export class SharedModule { }

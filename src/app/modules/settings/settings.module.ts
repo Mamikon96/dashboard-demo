@@ -18,4 +18,5 @@ import { FormsModule } from '@angular/forms';
 		SettingsRoutingModule
 	]
 })
-export class SettingsModule { }
+export class SettingsModule {
+}

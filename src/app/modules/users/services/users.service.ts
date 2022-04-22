@@ -1,32 +1,35 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from './../../../../environments/environment';
 import { Service } from "./services.service";
+import { Role } from "src/app/services/auth.service";
+import { filter, find, switchMap } from "rxjs/operators";
 
 
+
+export interface User {
+	id?: number;
+	name?: string;
+	services: Service[];
+	username?: string;
+    password?: string;
+    email?: string;
+	phone?: string;
+	role: Role;
+}
 
 // export interface User {
 // 	id?: number;
 // 	name?: string;
-// 	services: Service[];
+// 	service?: string;
+// 	traffic?: number;
+// 	usedTraffic?: number;
 // 	username?: string;
 //     password?: string;
 //     email?: string;
 // 	phone?: string;
 // }
-
-export interface User {
-	id?: number;
-	name?: string;
-	service?: string;
-	traffic?: number;
-	usedTraffic?: number;
-	username?: string;
-    password?: string;
-    email?: string;
-	phone?: string;
-}
 
 
 @Injectable({
@@ -53,6 +56,13 @@ export class UsersService {
 
 	public getUsers(): Observable<User[]> {
 		return this.http.get<User[]>(this.backendUrl);
+	}
+
+	public getUserById(id: number): Observable<User> {
+		return this.http.get<User[]>(this.backendUrl)
+				.pipe(
+					switchMap((users: User[]) => of(users.find((user: User) => user.id === id)!))
+				);
 	}
 
 }

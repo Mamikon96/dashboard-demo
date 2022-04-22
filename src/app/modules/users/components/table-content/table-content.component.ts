@@ -31,13 +31,15 @@ export class TableContentComponent implements OnInit, AfterViewInit {
 			this.users = [...data];
 			let usersTemp: UserDataSource[] = [];
 			for (let i = 0; i < data.length; i++) {
-				usersTemp.push({
-					position: i + 1,
-					name: data[i].name!,
-					service: data[i].service!,
-					traffic: data[i].traffic!,
-					usedTraffic: data[i].usedTraffic!
-				});
+				for (let j = 0; j < data[i].services?.length; j++) {
+					usersTemp.push({
+						position: i + 1,
+						name: data[i].name!,
+						service: data[i].services[j].name,
+						traffic: data[i].services[j].traffic,
+						usedTraffic: data[i].services[j].usedTraffic
+					});
+				}
 			}
 			this.updateTable(usersTemp);
 		});

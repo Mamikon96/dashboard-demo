@@ -8,26 +8,24 @@
 				<span class="user-info__header-title-value"> {{ user.name }} </span>
 			</mat-panel-title>
 			<mat-panel-description>
-				<span class="user-info__header-meta-key">Used traffic:</span>
+				<!-- <span class="user-info__header-meta-key">Used traffic:</span>
 				<span class="user-info__header-meta-value"
 					[appTreshold]="usedTrafficByUserInPercent"
-				> {{ user.usedTraffic! | percent:user.traffic! }}% </span>
+				> {{ user.usedTraffic! | percent:user.traffic! }}% </span> -->
+				<span class="user-info__header-link" [routerLink]="['/admin', 'profile', user.id]" >Go To User</span>
 			</mat-panel-description>
 		</mat-expansion-panel-header>
 
 		<div *ngIf="panelOpenState" class="user-info__content">
 			<div class="user-info__content-chart user-info__content-item">
-				<app-chart [type]="chartType" [user]="user"></app-chart>
+				<!-- <app-chart [type]="chartType" [user]="user" [configs]="configs"></app-chart> -->
+				<!-- <app-chart [type]="chartType" [data]="chartData"></app-chart> -->
+				<app-chart-wrapper [userId]="user.id!"></app-chart-wrapper>
 			</div>
 			<div class="user-info__content-description user-info__content-item">
-				<div class="user-info__content-description-item">
-					<span class="user-info__content-description-item-key">Traffic:</span>
-					<span class="user-info__content-description-item-value">{{user.traffic! | traffic}}</span>
-				</div>
-
-				<div class="user-info__content-description-item">
-					<span class="user-info__content-description-item-key">Used Traffic:</span>
-					<span class="user-info__content-description-item-value">{{user.traffic! | traffic}}</span>
+				<div class="user-info__content-description-item" *ngFor="let service of user.services">
+					<span class="user-info__content-description-item-key">{{ service.name }}:</span>
+					<span class="user-info__content-description-item-value">{{service.usedTraffic! | traffic}} / {{service.traffic! | traffic}}</span>
 				</div>
 			</div>
 		</div>

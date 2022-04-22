@@ -4,11 +4,16 @@
 	],
 	"users2": [
 		{
+			"id": 0,
+			"name": "Administrator",
+			"username": "admin",
+			"password": "admin",
+			"services": [],
+			"role": "admin"
+		},
+		{
 			"id": 1,
 			"name": "Mamikon",
-			"service": "Skype",
-			"traffic": 21474836480,
-			"usedTraffic": 15368709921,
 			"username": "mamikon",
 			"password": "123",
 			"services": [
@@ -16,7 +21,21 @@
 				{ "id": 2, "name": "Youtube", "usedTraffic": 22121, "traffic": 121212 },
 				{ "id": 3, "name": "Instagram", "usedTraffic": 32121, "traffic": 121212 },
 				{ "id": 4, "name": "VK", "usedTraffic": 42121, "traffic": 121212 }
-			]
+			],
+			"role": "user"
+		},
+		{
+			"id": 2,
+			"name": "Ivan",
+			"username": "ivan",
+			"password": "123",
+			"services": [
+				{ "id": 1, "name": "Mail", "usedTraffic": 42121, "traffic": 121212 },
+				{ "id": 2, "name": "Youtube", "usedTraffic": 22121, "traffic": 121212 },
+				{ "id": 3, "name": "Tik-Tok", "usedTraffic": 22121, "traffic": 121212 },
+				{ "id": 4, "name": "VK", "usedTraffic": 42121, "traffic": 121212 }
+			],
+			"role": "user"
 		}
 	],
 	"users": [
