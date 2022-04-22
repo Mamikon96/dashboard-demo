@@ -5,14 +5,16 @@
 	<div>
 		<div>
 		  	<div style="display: block">
-				<canvas baseChart
+				<canvas baseChart [appChart]="chart"
+					(onHover)="onHoverHandler($event)"
+					(onLeave)="onLeaveHandler($event)"
 					class="chart__content"
 					width="300px"
 					height="300px"
-					[attr.options]="chartConfig.options"
-					[data]="chartConfig.data"
-					[labels]="chartConfig.labels"
-					[colors]="chartConfig.colors"
+					[attr.options]="configs.options"
+					[data]="configs.data[0]"
+					[labels]="configs.labels"
+					[colors]="configs.colors"
 					[chartType]="type"
 					(chartHover)="chartHovered($event)">
 				</canvas>
@@ -20,4 +22,41 @@
 		  	<div class="chartjs-tooltip"></div>
 		</div>
 	</div>
+	
+	<!-- <ng-container #tooltipPopup *ngIf="showPopup">
+		<div class="popup">
+			<div class="popup__header">
+				<span class="popup__header-item-key">{{ tooltipTitleDescr }}</span>
+				<span class="popup__header-item-value">{{ tooltipTitle }}</span>
+			</div>
+			<span class="popup__divider"></span>
+			<div class="popup__content">
+				<div class="popup__content-item">
+					<span class="popup__content-item-key">Used traffic:</span>
+					<span class="popup__content-item-value">{{ tooltipContentUsedTraffic }}</span>
+				</div>
+				<div class="popup__content-item">
+					<span class="popup__content-item-key">Traffic:</span>
+					<span class="popup__content-item-value">{{ tooltipContentTraffic }}</span>
+				</div>
+			</div>
+		</div>
+	</ng-container> -->
+
+	<ng-container #tooltipPopup *ngIf="showPopup">
+		<div class="popup">
+			<div class="popup__header">
+				<span class="popup__header-item-value">{{ tooltipTitle }}</span>
+			</div>
+			<span class="popup__divider"></span>
+			<div class="popup__content">
+				<div class="popup__content-item">
+					{{ tooltipContentUsedTraffic }}/
+				</div>
+				<div class="popup__content-item">
+					{{ tooltipContentAllTraffic }}
+				</div>
+			</div>
+		</div>
+	</ng-container>
 </div>

@@ -1,5 +1,5 @@
 <li *ngIf="tab" class="tab">
-	<a [routerLink]="tab.id">
+	<a [routerLink]="tab.path">
 		<span class="tab__icon-wrapper">
 			<ng-container *ngIf="tab.iconTemplate; else icon" class="tab__icon">
 				{{tab.iconTemplate}}

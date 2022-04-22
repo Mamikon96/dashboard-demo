@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+	<div class="profile content">
+		<h2 class="profile__title">{{ user?.name }}</h2>
+
+		<div class="profile__content">
+			<div class="profile__content-item" *ngFor="let service of user.services">
+				<div class="profile__content-item-title">{{ service.name }}</div>
+				<!-- <app-chart [type]="chartConfig.type" [user]="user" [configs]="chartConfig"></app-chart> -->
+				<!-- <app-chart [type]="chartConfig.type" [configs]="chartConfig"></app-chart> -->
+				<app-chart-wrapper [userId]="user.id!" [serviceId]="service.id"></app-chart-wrapper>
+			</div>
+		</div>
+
+	</div>
+</div>

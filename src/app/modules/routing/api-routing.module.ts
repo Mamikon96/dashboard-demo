@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ApiLayoutComponent } from '../components/api-layout/api-layout.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
+import { ApiLayoutComponent } from '../components/api-layout/api-layout.component';
+import { ApiContainerComponent } from './api-container/api-container.component';
 
 
 const routes: Routes = [
@@ -10,29 +10,20 @@ const routes: Routes = [
 		path: '', component: ApiLayoutComponent, children: [
 			{
 				path: '',
-				redirectTo: 'dashboard',
+				redirectTo: 'user',
 				pathMatch: 'full'
 			},
-			{ 
-				path: 'dashboard',
-				loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule),
+			{
+				path: 'user',
+				loadChildren: () => import('./user-api-routing.module').then(m => m.UserApiRoutingModule),
 				canActivate: [AuthGuard]
 			},
-			{ 
-				path: 'users',
-				loadChildren: () => import('../users/users.module').then(m => m.UsersModule),
+			{
+				path: 'admin',
+				loadChildren: () => import('./admin-api-routing.module').then(m => m.AdminApiRoutingModule),
 				canActivate: [AuthGuard]
 			},
-			{ 
-				path: 'settings',
-				loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule),
-				canActivate: [AuthGuard]
-			},
-			{ 
-				path: 'errorPage',
-				loadChildren: () => import('../page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
-			},
-			{ 
+			{
 				path: '**',
 				redirectTo: 'errorPage'
 			}
@@ -46,4 +37,5 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule]
 })
-export class ApiRoutingModule { }
+export class ApiRoutingModule {
+}

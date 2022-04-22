@@ -1,16 +1,19 @@
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { User, UsersService } from '../modules/users/services/users.service';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { AuthModule } from '../modules/auth/auth.module';
+import { BehaviorSubject, Observable, ReplaySubject, Subscription } from 'rxjs';
+// import { AuthModule } from '../modules/auth/auth.module';
 
-import * as bcrypt from 'bcryptjs';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
+
+	private userSubject: Subject<User> = new ReplaySubject<User>(1);
+	public user$: Observable<User> = this.userSubject.asObservable();
 
 	static instance?: AuthService;
 
@@ -47,20 +50,28 @@ export class AuthService implements OnDestroy {
 		this.usersSub && this.usersSub.unsubscribe();
 	}
 
-	public login(user: User): boolean {
-		if (this.findUserByUsername(user.username!)) {
+	public login(user: User): User | null {
+		const currUser: User = this.findUserByUsername(user.username!);
+		if (currUser) {
 			// this._isLoggedIn = true;
 			// this.loggedInSubject.next(true);
-			AuthService.user = user;
+			AuthService.user = currUser;
+			this.userSubject.next(currUser);
 
 			// const salt = bcrypt.genSaltSync(10);
 			// const token = bcrypt.hashSync(environment.secret, environment.salt);
 			const token = btoa(environment.secret);
-
 			sessionStorage.setItem('token', token);
-			return true;
+
+			const user = btoa(JSON.stringify(currUser));
+			sessionStorage.setItem('user', user);
+
+			// const role = btoa(environment.secret);
+			// sessionStorage.setItem('role', role);
+
+			return currUser;
 		} else {
-			return false;
+			return null;
 		}
 	}
 
@@ -68,7 +79,21 @@ export class AuthService implements OnDestroy {
 		// this._isLoggedIn = false;
 		// this.loggedInSubject.next(false);
 		sessionStorage.removeItem('token');
+		sessionStorage.removeItem('user');
+		// sessionStorage.removeItem('role');
 		return true;
+	}
+
+	public updateCurrentUser(user: User): void {
+		this.userSubject.next(user);
+	}
+
+	public getCurrentUserRole(): Role {
+		if (AuthService.user) {
+			return AuthService.user.role;
+		} else {
+			return Role.user;
+		}
 	}
 
 	private findUserByUsername(username: string): User {
@@ -76,4 +101,11 @@ export class AuthService implements OnDestroy {
 
 		return user;
 	}
+
+}
+
+
+export enum Role {
+	admin = 'admin',
+	user = 'user'
 }

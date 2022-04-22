@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit, AfterViewInit, OnDestroy } from '
 import { Router, NavigationCancel, NavigationEnd, NavigationError, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Tab } from 'src/app/models/tab.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { TabsService } from 'src/app/services/tabs.service';
 
@@ -20,16 +21,18 @@ export class ApiLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 	constructor(private tabsService: TabsService,
 				private router: Router,
 				private cdr: ChangeDetectorRef,
-				public loaderService: LoaderService) { }
+				public loaderService: LoaderService,
+				public auth: AuthService) { }
 
 	ngOnInit(): void {
 		this.tabsSub = this.tabsService.tabs$.subscribe((tabs: Tab[]) => {
-			this.tabs = tabs;
+			this.tabs = [...tabs];
+			
 		})
 		this.router.events.subscribe(event => {
 			let url = null;
 			if (event instanceof NavigationEnd) {
-				url = event.url.substring(event.url.lastIndexOf('/') + 1);
+				url = event.urlAfterRedirects.substring(event.url.indexOf('/') + 1);
 			}
 			switch (true) {
 				case event instanceof NavigationStart: {
@@ -39,7 +42,6 @@ export class ApiLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 				case event instanceof NavigationEnd: {
 					this.loaderService.hide();
 					this.tabsService.updateActiveTab(url!);
-					console.log(`mako 2 url: ${url}`);
 					break;
 				}
 				case event instanceof NavigationCancel:
