@@ -2,7 +2,7 @@
 @import 'variables'
 @import 'custom-material'
 @import 'css-variables'
-	
+
 *
 	margin: 0
 	padding: 0
@@ -111,7 +111,7 @@
 	border-radius: 50px
 	/*box-shadow: 0 0 15px #0099FF;*/
 	box-shadow: 0 0 15px #A9A9A9
-	padding:20px 40px
+	padding: 20px 40px
 	justify-content: center
 	align-items: center
 	overflow: hidden
@@ -123,7 +123,7 @@
 	right: 0
 	width: 100%
 	height: $header-height
-	z-index: 1000
+	z-index: 3000
 	background-color: $header-background-color
 	.header
 		width: 100%
@@ -160,6 +160,79 @@
 					color: #fff
 					margin-left: .5rem
 					line-height: 21px
+		.burger-menu
+			display: none
+@media (max-width: 414px)
+	.navbar
+		.header
+			.menu
+				display: none
+			.burger-menu
+				display: flex
+				// position: relative
+				width: 100%
+				&__button,
+				&__button:before,
+				&__button:after
+					display: block
+					background-color: #fff
+					position: absolute
+					right: 0
+					height: 4px
+					width: 30px
+					transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1)
+					border-radius: 2px
+				&__button:before
+					content: ''
+					margin-top: -8px
+				&__button:after
+					content: ''
+					margin-top: 8px
+				.menu-button-container
+					// display: none
+					height: 100%
+					width: 30px
+				#menu-toggle
+					display: none
+				#menu-toggle:checked + .menu-button-container .burger-menu__button:before
+					margin-top: 0px
+					transform: rotate(405deg)
+				#menu-toggle:checked + .menu-button-container .burger-menu__button
+					background: rgba(255, 255, 255, 0)
+				#menu-toggle:checked + .menu-button-container .burger-menu__button:after
+					margin-top: 0px
+					transform: rotate(-405deg)
+				&__menu
+					display: flex
+					flex-direction: row
+					list-style-type: none
+					margin: 0
+					padding: 0
+				&__menu > li
+					margin: 0 1rem
+				&__menu
+					display: none
+				#menu-toggle:checked ~ .burger-menu__menu
+					display: flex
+					position: absolute
+					top: 60px
+					margin-top: 0px
+					left: 0
+					right: 0
+					flex-direction: column
+					width: 100%
+					// height: 100px
+					justify-content: center
+					align-items: center
+					background-color: $navigation-background-color
+				#menu-toggle:checked ~ .burger-menu__menu li
+					border-bottom: 1px solid #000
+					height: 2.5em
+					width: 100%
+					padding: 0.5em
+					transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1)
+					text-align: center
+					color: #fff
 
 .navigation
 	position: fixed
@@ -171,7 +244,7 @@
 	box-shadow: 10px 0 0 $navigation-active-color
 	overflow-x: hidden
 	transition: width 0.5s
-	z-index: 1000
+	z-index: 3000
 	.tabs
 		position: absolute
 		top: 0
@@ -220,6 +293,83 @@
 				border-bottom-left-radius: 20px
 	&:hover
 		width: $navigation-width-expanded
+@media (min-width: 415px) and (max-width: 784px)
+	.navigation
+		width: 100vw
+		background-color: $navigation-background-color
+		min-height: $navigation-height
+		overflow-y: hidden
+		.tabs
+			height: inherit
+			padding-top: 0
+			padding-left: 20px
+			.tab
+				padding-left: 20px
+				height: inherit
+				width: 180px
+				display: inline-block
+				&__icon-wrapper
+					height: $navigation-height
+				&__title
+					height: $navigation-height
+					// line-height: $navigation-height
+					line-height: 57px
+					padding-left: 0
+				&:hover
+					background-color: $navigation-hover-color
+					// border-top-left-radius: 20px
+					// border-bottom-left-radius: 20px
+					border-radius: 0
+			.active
+				.tab
+					position: relative
+					background-color: transparent
+					border-radius: 0
+					// border-bottom: 4px solid $navigation-active-color
+					// outline: 4px solid red
+					// outline-offset: -4px
+					&:before
+						content: ''
+						position: absolute
+						left: 0
+						right: 0
+						bottom: 0
+						width: 100%
+						height: 4px
+						background-color: $navigation-active-color
+					&:hover
+						background-color: $navigation-active-color
+		&:hover
+			width: 100vw
+@media (max-width: 414px)
+	.navigation
+		display: flex
+		position: absolute
+		top: 60px
+		margin-top: 0px
+		left: 0
+		right: 0
+		flex-direction: column
+		width: 100%
+		// height: 50px
+		min-height: 300px
+		// height: 100px
+		justify-content: center
+		align-items: center
+		background-color: $navigation-background-color
+		.tabs
+			padding-right: 10px
+			.tab
+				a
+					transform: translateX(25%)
+				&__icon-wrapper
+					min-width: auto
+			.active
+				.tab
+					background-color: $navigation-active-color
+					border-radius: 20px
+		&:hover
+			width: 100%
 
 .background-placeholder
 	position: absolute
@@ -236,10 +386,15 @@
 	position: absolute
 	// top: $header-height
 	top: 0
+
 	// left: $content-position-left
-	left: 6vw
+	// left: 6vw
+	left: 10%
+
 	// width: $content-width
-	width: 94vw
+	// width: 94vw
+	width: 90%
+
 	// height: 90vh
 	height: calc( 100vh - 60px )
 	// padding: 12vh 3vw 2vh 13vw
@@ -257,6 +412,19 @@
 		background-color: darkgrey
 		-webkit-border-radius: 10px
 		// outline: 1px solid slategrey
+
+@media (max-width: 784px)
+	.content-wrapper
+		height: calc( 100vh - 110px )
+		margin-top: 110px
+		left: 0
+		width: 100%
+@media (max-width: 414px)
+	.content-wrapper
+		height: calc( 100vh - 60px )
+		margin-top: 60px
+		left: 0
+		width: 100%
 
 .content
 	display: flex
@@ -347,6 +515,17 @@
 			&-title
 				font-size: 20px
 				color: #fff
+@media (max-width: 414px)
+	.profile
+		&__content
+			padding-top: 0
+			display: flex
+			flex-direction: column
+			&-item
+				display: flex
+				flex-direction: column
+				align-items: center
+
 
 .settings
 	// height: calc(100vh - #{$header-height}) //90vh
@@ -446,6 +625,6 @@
 		height: 100vh
 		background-color: #fff
 		padding: 30px
-		
-app-root app-header .notifications-list
+
+app-root app-main-header .notifications-list
 	// --bg-color: rgba(27, 140, 151, 1)

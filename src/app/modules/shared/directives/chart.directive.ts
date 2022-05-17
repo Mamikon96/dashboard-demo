@@ -39,12 +39,14 @@ export class ChartDirective implements OnChanges {
 			this.onHover.emit(index);
 
 			this.currIndex = index;
-		} else {
-			// todo: hide tooltip
-			if (this.currIndex !== -1) {
-				this.onLeave.emit(this.currIndex);
-				this.currIndex = -1;
-			}
+		}
+	}
+
+	@HostListener('mouseleave', ['$event'])
+	public onMouseLeaveHandler(event: any) {
+		if (this.currIndex !== -1) {
+			this.onLeave.emit(this.currIndex);
+			this.currIndex = -1;
 		}
 	}
 }

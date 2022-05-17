@@ -11,6 +11,7 @@ import { ChartDirective } from "./directives/chart.directive";
 import { RouterModule } from "@angular/router";
 import { ChartService } from "./services/chart.service";
 import { ChartWrapperComponent } from './components/chart-wrapper/chart-wrapper.component';
+import { ScreenWidthListenerDirective } from './directives/screen-width-listener.directive';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { ChartWrapperComponent } from './components/chart-wrapper/chart-wrapper.
 		PercentPipe,
 		TresholdDirective,
 		ChartDirective,
-  		ChartWrapperComponent
+  		ChartWrapperComponent,
+    ScreenWidthListenerDirective
 	],
 	imports: [
 		CommonModule,
@@ -28,16 +30,17 @@ import { ChartWrapperComponent } from './components/chart-wrapper/chart-wrapper.
 		ChartsModule,
 		RouterModule
 	],
-	exports: [
-		ChartComponent,
-		ChartWrapperComponent,
-		UserInfoComponent,
-		TrafficPipe,
-		PercentPipe,
-		TresholdDirective,
-		ChartDirective,
-		MaterialModule
-	],
+    exports: [
+        ChartComponent,
+        ChartWrapperComponent,
+        UserInfoComponent,
+        TrafficPipe,
+        PercentPipe,
+        TresholdDirective,
+        ChartDirective,
+        MaterialModule,
+        ScreenWidthListenerDirective
+    ],
 	providers: [ChartService]
 })
 export class SharedModule { }

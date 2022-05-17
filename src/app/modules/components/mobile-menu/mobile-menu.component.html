@@ -1,0 +1,5 @@
+<!--<input type="checkbox" id="menu-toggle" [checked]="(overlayService.showOverlay$ | async)" (change)="menuButtonHandler()" #navigationMenuButton>-->
+<input type="checkbox" id="menu-toggle" [checked]="(navMenuManager.showNavMenu$ | async)" (change)="menuButtonHandler()" #navigationMenuButton>
+<label class="menu-button-container" for="menu-toggle">
+	<div class="burger-menu__button"></div>
+</label>

@@ -1,4 +1,7 @@
-<app-header [title]="title"></app-header>
-<app-navigation [tabs]="tabs"></app-navigation>
+<app-header></app-header>
 <div class="background-placeholder"></div>
-<router-outlet></router-outlet>
+<app-overlay [showOverlay]="false">
+    <router-outlet></router-outlet>
+</app-overlay>
+
+<!--<app-overlay [showOverlay]="false"></app-overlay>-->

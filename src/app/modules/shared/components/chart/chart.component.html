@@ -5,9 +5,11 @@
 	<div>
 		<div>
 		  	<div style="display: block">
-				<canvas baseChart [appChart]="chart"
+				<canvas baseChart 
+					[appChart]="chart"
 					(onHover)="onHoverHandler($event)"
 					(onLeave)="onLeaveHandler($event)"
+					
 					class="chart__content"
 					width="300px"
 					height="300px"

@@ -11,7 +11,7 @@ import { ChartConfiguration, ChartManagerService, CustomChartData } from '../../
 	templateUrl: './chart-wrapper.component.html',
 	styleUrls: ['./chart-wrapper.component.sass']
 })
-export class ChartWrapperComponent implements OnChanges, OnInit {
+export class ChartWrapperComponent implements OnInit {
 
 	@Input() userId!: number;
 	@Input() serviceId?: number;
@@ -23,10 +23,6 @@ export class ChartWrapperComponent implements OnChanges, OnInit {
 
 
 	constructor(private chartService: ChartManagerService,) { }
-
-
-	ngOnChanges(changes: SimpleChanges): void {
-	}
 
 	ngOnInit(): void {
 		Chart.defaults.global.tooltips.enabled = false;
