@@ -1,0 +1,136 @@
+.navigation
+	position: fixed
+	top: $header-height
+	left: 0
+	width: $navigation-width
+	background-color: $navigation-background-color
+	min-height: 100vh
+	box-shadow: 10px 0 0 $navigation-active-color
+	overflow-x: hidden
+	transition: width 0.5s
+	z-index: 3000
+	.tabs
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		padding-left: 10px
+		padding-top: 30px
+		list-style: none
+		.active
+			.tab
+				background-color: $navigation-active-color
+				border-top-left-radius: 20px
+				border-bottom-left-radius: 20px
+				&:hover
+					background-color: $navigation-active-color
+		.tab
+			width: 100%
+			display: block
+			list-style: none
+			&__icon-wrapper
+				position: relative
+				display: block
+				min-width: 60px
+				height: 60px
+				line-height: 70px
+				text-align: center
+			&__icon
+				position: relative
+				font-size: 1.5em
+				z-index: 1
+			&__title
+				position: relative
+				display: block
+				padding-left: 10px
+				height: 60px
+				line-height: 60px
+			a
+				position: relative
+				width: 100%
+				display: flex
+				text-decoration: none
+				color: #fff
+			&:hover
+				background-color: $navigation-hover-color
+				border-top-left-radius: 20px
+				border-bottom-left-radius: 20px
+	&:hover
+		width: $navigation-width-expanded
+@media (min-width: 415px) and (max-width: 784px)
+	.navigation
+		width: 100vw
+		background-color: $navigation-background-color
+		min-height: $navigation-height
+		overflow-y: hidden
+		.tabs
+			height: inherit
+			padding-top: 0
+			padding-left: 20px
+			.tab
+				padding-left: 20px
+				height: inherit
+				width: 180px
+				display: inline-block
+				&__icon-wrapper
+					height: $navigation-height
+				&__title
+					height: $navigation-height
+					// line-height: $navigation-height
+					line-height: 57px
+					padding-left: 0
+				&:hover
+					background-color: $navigation-hover-color
+					// border-top-left-radius: 20px
+					// border-bottom-left-radius: 20px
+					border-radius: 0
+			.active
+				.tab
+					position: relative
+					background-color: transparent
+					border-radius: 0
+					// border-bottom: 4px solid $navigation-active-color
+					// outline: 4px solid red
+					// outline-offset: -4px
+					&:before
+						content: ''
+						position: absolute
+						left: 0
+						right: 0
+						bottom: 0
+						width: 100%
+						height: 4px
+						background-color: $navigation-active-color
+					&:hover
+						background-color: $navigation-active-color
+		&:hover
+			width: 100vw
+@media (max-width: 414px)
+	.navigation
+		display: flex
+		position: absolute
+		top: 60px
+		margin-top: 0px
+		left: 0
+		right: 0
+		flex-direction: column
+		width: 100%
+		// height: 50px
+		min-height: 300px
+		// height: 100px
+		justify-content: center
+		align-items: center
+		background-color: $navigation-background-color
+		.tabs
+			padding-right: 10px
+			.tab
+				a
+					transform: translateX(25%)
+				&__icon-wrapper
+					min-width: auto
+			.active
+				.tab
+					background-color: $navigation-active-color
+					border-radius: 20px
+		&:hover
+			width: 100%

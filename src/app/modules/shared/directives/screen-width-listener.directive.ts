@@ -1,12 +1,6 @@
 import {Directive, HostListener} from "@angular/core";
-import {PlatformService} from "../../../services/platform.service";
+import {PlatformService, PlatformType} from "../../../services/platform.service";
 
-
-export enum PlatformType {
-    MOBILE = "mobile",
-    TABLET = "tablet",
-    DESKTOP = "desktop"
-}
 
 export enum ScreenSize {
     mobile = 414,

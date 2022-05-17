@@ -1,9 +1,15 @@
 import {Injectable} from "@angular/core";
-import {PlatformType} from "../modules/shared/directives/screen-width-listener.directive";
 import {LocalStorageService} from "./local-storage.service";
 
 
 export const PLATFORM_KEY = "platform";
+
+export enum PlatformType {
+    MOBILE = "mobile",
+    TABLET = "tablet",
+    DESKTOP = "desktop"
+}
+
 
 @Injectable({
     providedIn: "root"
@@ -14,12 +20,12 @@ export class PlatformService {
 
 
     constructor(private localStorage: LocalStorageService<PlatformType>) {
-    	const platformFromLocalStorage = this.localStorage.getItem(PLATFORM_KEY);
-    	if (platformFromLocalStorage !== null) {
-    		this.currentPlatform = platformFromLocalStorage;
-	    } else {
-    		this.currentPlatform = PlatformType.DESKTOP;
-	    }
+        const platformFromLocalStorage = this.localStorage.getItem(PLATFORM_KEY);
+        if (platformFromLocalStorage !== null) {
+            this.currentPlatform = platformFromLocalStorage;
+        } else {
+            this.currentPlatform = PlatformType.DESKTOP;
+        }
     }
 
 
@@ -38,6 +44,6 @@ export class PlatformService {
 
     public isDesktop(): boolean {
         return this.currentPlatform === PlatformType.DESKTOP
-                || this.currentPlatform === PlatformType.TABLET;
+            || this.currentPlatform === PlatformType.TABLET;
     }
 }

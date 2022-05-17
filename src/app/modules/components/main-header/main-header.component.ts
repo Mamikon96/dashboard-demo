@@ -1,13 +1,12 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-import {Alert, AlertType} from '../../alert/services/alert.service';
-import {AlertsStoreService} from '../../alert/services/alerts-store.service';
-import {Notification} from '../../notifications/models/notification.model';
-import {NotificationsVisibilityService} from '../../notifications/services/notifications-visibility.service';
-import {StoreTypeService} from '../../users/services/store-type.service';
-import {OverlayService} from '../../overlay/services/overlay.service';
-import {Subscription} from 'rxjs';
-import {PlatformType} from '../../shared/directives/screen-width-listener.directive';
-import {PlatformService} from '../../../services/platform.service';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from "@angular/core";
+import {Alert, AlertType} from "../../alert/services/alert.service";
+import {AlertsStoreService} from "../../alert/services/alerts-store.service";
+import {Notification} from "../../notifications/models/notification.model";
+import {NotificationsVisibilityService} from "../../notifications/services/notifications-visibility.service";
+import {StoreTypeService} from "../../users/services/store-type.service";
+import {OverlayService} from "../../overlay/services/overlay.service";
+import {Subscription} from "rxjs";
+import {PlatformService} from "../../../services/platform.service";
 
 interface MenuItemOperation {
     id: string;
@@ -20,25 +19,25 @@ interface MenuItemOperations {
 
 
 @Component({
-    selector: 'app-main-header',
-    templateUrl: './main-header.component.html',
-    styleUrls: ['./main-header.component.sass']
+    selector: "app-main-header",
+    templateUrl: "./main-header.component.html",
+    styleUrls: ["./main-header.component.sass"]
 })
 export class MainHeaderComponent implements OnInit {
 
     @Input() title?: string;
     @Output() menuButtonClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    @ViewChild('navigationMenuButton') navigationMenuButtonRef!: ElementRef;
-    @ViewChild('burgerMenu') burgerMenuEl!: ElementRef;
-    @ViewChild('menu') menuEl!: ElementRef;
+    @ViewChild("navigationMenuButton") navigationMenuButtonRef!: ElementRef;
+    @ViewChild("burgerMenu") burgerMenuEl!: ElementRef;
+    @ViewChild("menu") menuEl!: ElementRef;
 
-    public selectedValue = '';
-    public menuItems: string[] = ['Store'];
+    public selectedValue = "";
+    public menuItems: string[] = ["Store"];
     public menuItemsOperations: MenuItemOperations = {
         Store: [
-            {id: 'database', value: 'Database'},
-            {id: 'localstorage', value: 'Local Storage'}
+            {id: "database", value: "Database"},
+            {id: "localstorage", value: "Local Storage"}
         ]
     };
     public useMobileNavigation = false;
@@ -50,13 +49,13 @@ export class MainHeaderComponent implements OnInit {
     public alerts: Alert[] = [];
     public notifications: Notification[] = [];
 
-    private store: 'database' | 'localStorage' = 'database';
+    private store: "database" | "localStorage" = "database";
 
     public overlaySub!: Subscription;
 
     public get showNav(): boolean {
-	    console.log(this.burgerMenuEl);
-	    return false;
+        console.log(this.burgerMenuEl);
+        return false;
     }
 
 

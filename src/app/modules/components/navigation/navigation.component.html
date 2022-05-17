@@ -1,4 +1,4 @@
-<div class="navigation" *ngIf="(navMenuManager.showNavMenu$ | async)">
+<div class="navigation" *ngIf="!platformService.isMobile() || (navMenuManager.showNavMenu$ | async)">
 	<ul class="tabs">
 		<app-tab *ngFor="let tab of tabs; trackBy: trackByFn"
 				[class.active]="tab.active"

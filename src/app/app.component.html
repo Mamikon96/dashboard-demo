@@ -1,6 +1,6 @@
-<div class="app-wrapper">
-	<app-spinner [show]="loaderService.isShown$ | async"></app-spinner>
-	<router-outlet></router-outlet>
+<div class="app-wrapper" appScreenWidthListener>
+    <app-spinner [show]="loaderService.isShown$ | async"></app-spinner>
+    <router-outlet></router-outlet>
 </div>
 
 <app-alert-placeholder [delay]="3000"></app-alert-placeholder>

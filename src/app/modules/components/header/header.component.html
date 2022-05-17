@@ -4,6 +4,6 @@
 <!--&gt;</app-main-header>-->
 <!--<app-navigation *ngIf="useDesktopNavigation || (useMobileNavigation && (overlayService.showOverlay$ | async))" [tabs]="tabs"></app-navigation>-->
 
-<app-main-header [title]="title" appScreenWidthListener></app-main-header>
+<app-main-header [title]="title"></app-main-header>
 <!--<app-navigation *ngIf="platform.isDesktop() || (platform.isMobile() && (overlayService.showOverlay$ | async))" [tabs]="tabs"></app-navigation>-->
 <app-navigation *ngIf="platform.isDesktop() || (platform.isMobile() && (navMenuManager.showNavMenu$ | async))" [tabs]="tabs"></app-navigation>

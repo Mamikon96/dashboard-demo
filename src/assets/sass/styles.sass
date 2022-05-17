@@ -2,629 +2,72 @@
 @import 'variables'
 @import 'custom-material'
 @import 'css-variables'
+@import 'spinner'
+@import 'navbar'
+@import 'navigation'
+@import 'content-wrapper'
+@import 'content'
+@import 'dashboard'
+@import 'profile'
+@import 'settings'
+@import 'error-404'
+@import 'login'
+@import 'chart'
 
 *
-	margin: 0
-	padding: 0
-	box-sizing: border-box
-	font-family: 'Poppins', sans-serif
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: 'Poppins', sans-serif
 
 .app-wrapper
-	position: relative
-	height: 100vh
-	overflow-y: auto
-	overflow-x: hidden
+    position: relative
+    height: 100vh
+    overflow-y: auto
+    overflow-x: hidden
 
-.chart
-	position: relative
-	width: 300px
-	// min-height: 300px
-	// margin-right: 40px
-	// margin-bottom: 30px
-	// padding: 10px
-	background-color: #fff
-	border-radius: 10px
-	display: flex
-	flex-direction: column
-	&__title
-	&__content
-		width: 200px
-		height: 200px
-	.popup
-		// position: absolute
-		// min-width: 260px
-		// padding: 10px 20px
-		// color: #fff
-		// background: rgba(0, 0, 0, 0.85)
-		// border-radius: 10px
-		// display: flex
-		// flex-direction: column
-
-		position: absolute
-		width: 120px
-		height: 120px
-
-		top: 59%
-		left: 50%
-		transform: translate(-50%, -50%)
-
-		padding: 25px 10px 10px
-		// height: 100px
-		// color: #fff
-		// background: rgba(0, 0, 0, 0.85)
-		color: #000
-		background: rgba(0, 0, 0, 0)
-
-		border-radius: 50%
-		display: flex
-		flex-direction: column
-		&__divider
-			width: 100%
-			height: 2px
-			background-color: #aaa
-			margin-bottom: 5px
-		&__header
-			margin-bottom: 5px
-			width: 100%
-			display: flex
-			// font-size: 19px
-			font-size: 15px
-			&-item
-				&-key
-					width: 50%
-				&-value
-					text-align: center
-					font-weight: 500
-					// width: 50%
-					width: 100%
-		&__content
-			width: 100%
-			display: flex
-			flex-direction: column
-			// font-size: 15px
-			font-size: 12px
-			&-item
-				// width: 100%
-				display: flex
-				margin: 0 auto
-				margin-bottom: 5px
-				// flex-direction: row
-				&-key
-					width: 50%
-				&-value
-					width: 50%
 .icon
-	font-size: 1.5em
+    font-size: 1.5em
 
 .form
-	display: flex
-	flex-direction: column
-	// margin: 20% auto
-	width: 80%
-	/*height: 200px;*/
-	min-height: 60%
-	background-color: #ffffff
-	position: absolute
-	top: 20%
-	left: 10%
-	border: 2px solid #D4D4D4
-	border-radius: 50px
-	/*box-shadow: 0 0 15px #0099FF;*/
-	box-shadow: 0 0 15px #A9A9A9
-	padding: 20px 40px
-	justify-content: center
-	align-items: center
-	overflow: hidden
-
-.navbar
-	position: fixed
-	top: 0
-	left: 0
-	right: 0
-	width: 100%
-	height: $header-height
-	z-index: 3000
-	background-color: $header-background-color
-	.header
-		width: 100%
-		height: 100%
-		margin: 0
-		padding: 0 12px
-		display: flex
-		justify-content: space-between
-		align-items: center
-		.logo
-			display: flex
-			text-decoration: none
-			&__icon
-				width: 30px
-				height: 30px
-			&__title
-				color: #fff
-				margin-left: .5rem
-				line-height: 30px
-		.menu
-			display: flex
-			&-item
-				display: flex
-				align-items: center
-				margin-left: 20px
-				text-decoration: none
-				color: #fff
-				.icon-wrapper
-					display: flex
-					align-items: center
-				&__icon
-					font-size: 1.5em
-				&__title
-					color: #fff
-					margin-left: .5rem
-					line-height: 21px
-		.burger-menu
-			display: none
-@media (max-width: 414px)
-	.navbar
-		.header
-			.menu
-				display: none
-			.burger-menu
-				display: flex
-				// position: relative
-				width: 100%
-				&__button,
-				&__button:before,
-				&__button:after
-					display: block
-					background-color: #fff
-					position: absolute
-					right: 0
-					height: 4px
-					width: 30px
-					transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1)
-					border-radius: 2px
-				&__button:before
-					content: ''
-					margin-top: -8px
-				&__button:after
-					content: ''
-					margin-top: 8px
-				.menu-button-container
-					// display: none
-					height: 100%
-					width: 30px
-				#menu-toggle
-					display: none
-				#menu-toggle:checked + .menu-button-container .burger-menu__button:before
-					margin-top: 0px
-					transform: rotate(405deg)
-				#menu-toggle:checked + .menu-button-container .burger-menu__button
-					background: rgba(255, 255, 255, 0)
-				#menu-toggle:checked + .menu-button-container .burger-menu__button:after
-					margin-top: 0px
-					transform: rotate(-405deg)
-				&__menu
-					display: flex
-					flex-direction: row
-					list-style-type: none
-					margin: 0
-					padding: 0
-				&__menu > li
-					margin: 0 1rem
-				&__menu
-					display: none
-				#menu-toggle:checked ~ .burger-menu__menu
-					display: flex
-					position: absolute
-					top: 60px
-					margin-top: 0px
-					left: 0
-					right: 0
-					flex-direction: column
-					width: 100%
-					// height: 100px
-					justify-content: center
-					align-items: center
-					background-color: $navigation-background-color
-				#menu-toggle:checked ~ .burger-menu__menu li
-					border-bottom: 1px solid #000
-					height: 2.5em
-					width: 100%
-					padding: 0.5em
-					transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1)
-					text-align: center
-					color: #fff
-
-.navigation
-	position: fixed
-	top: $header-height
-	left: 0
-	width: $navigation-width
-	background-color: $navigation-background-color
-	min-height: 100vh
-	box-shadow: 10px 0 0 $navigation-active-color
-	overflow-x: hidden
-	transition: width 0.5s
-	z-index: 3000
-	.tabs
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		padding-left: 10px
-		padding-top: 30px
-		list-style: none
-		.active
-			.tab
-				background-color: $navigation-active-color
-				border-top-left-radius: 20px
-				border-bottom-left-radius: 20px
-				&:hover
-					background-color: $navigation-active-color
-		.tab
-			width: 100%
-			display: block
-			list-style: none
-			&__icon-wrapper
-				position: relative
-				display: block
-				min-width: 60px
-				height: 60px
-				line-height: 70px
-				text-align: center
-			&__icon
-				position: relative
-				font-size: 1.5em
-				z-index: 1
-			&__title
-				position: relative
-				display: block
-				padding-left: 10px
-				height: 60px
-				line-height: 60px
-			a
-				position: relative
-				width: 100%
-				display: flex
-				text-decoration: none
-				color: #fff
-			&:hover
-				background-color: $navigation-hover-color
-				border-top-left-radius: 20px
-				border-bottom-left-radius: 20px
-	&:hover
-		width: $navigation-width-expanded
-@media (min-width: 415px) and (max-width: 784px)
-	.navigation
-		width: 100vw
-		background-color: $navigation-background-color
-		min-height: $navigation-height
-		overflow-y: hidden
-		.tabs
-			height: inherit
-			padding-top: 0
-			padding-left: 20px
-			.tab
-				padding-left: 20px
-				height: inherit
-				width: 180px
-				display: inline-block
-				&__icon-wrapper
-					height: $navigation-height
-				&__title
-					height: $navigation-height
-					// line-height: $navigation-height
-					line-height: 57px
-					padding-left: 0
-				&:hover
-					background-color: $navigation-hover-color
-					// border-top-left-radius: 20px
-					// border-bottom-left-radius: 20px
-					border-radius: 0
-			.active
-				.tab
-					position: relative
-					background-color: transparent
-					border-radius: 0
-					// border-bottom: 4px solid $navigation-active-color
-					// outline: 4px solid red
-					// outline-offset: -4px
-					&:before
-						content: ''
-						position: absolute
-						left: 0
-						right: 0
-						bottom: 0
-						width: 100%
-						height: 4px
-						background-color: $navigation-active-color
-					&:hover
-						background-color: $navigation-active-color
-		&:hover
-			width: 100vw
-@media (max-width: 414px)
-	.navigation
-		display: flex
-		position: absolute
-		top: 60px
-		margin-top: 0px
-		left: 0
-		right: 0
-		flex-direction: column
-		width: 100%
-		// height: 50px
-		min-height: 300px
-		// height: 100px
-		justify-content: center
-		align-items: center
-		background-color: $navigation-background-color
-		.tabs
-			padding-right: 10px
-			.tab
-				a
-					transform: translateX(25%)
-				&__icon-wrapper
-					min-width: auto
-			.active
-				.tab
-					background-color: $navigation-active-color
-					border-radius: 20px
-		&:hover
-			width: 100%
+    display: flex
+    flex-direction: column
+    // margin: 20% auto
+    width: 80%
+    /*height: 200px;*/
+    min-height: 60%
+    background-color: #ffffff
+    position: absolute
+    top: 20%
+    left: 10%
+    border: 2px solid #D4D4D4
+    border-radius: 50px
+    /*box-shadow: 0 0 15px #0099FF;*/
+    box-shadow: 0 0 15px #A9A9A9
+    padding: 20px 40px
+    justify-content: center
+    align-items: center
+    overflow: hidden
 
 .background-placeholder
-	position: absolute
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
-	// width: 100%
-	// height: 100%
-	overflow: hidden
-	background: $content-background-color
-
-.content-wrapper
-	position: absolute
-	// top: $header-height
-	top: 0
-
-	// left: $content-position-left
-	// left: 6vw
-	left: 10%
-
-	// width: $content-width
-	// width: 94vw
-	width: 90%
-
-	// height: 90vh
-	height: calc( 100vh - 60px )
-	// padding: 12vh 3vw 2vh 13vw
-	margin-top: 60px
-	// margin-left: 90px
-	padding: 10px
-	overflow-y: scroll
-	&::-webkit-scrollbar
-		width: 10px
-	&::-webkit-scrollbar-track
-		-webkit-border-top-right-radius: 10px
-		-webkit-border-bottom-right-radius: 10px
-		// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
-	&::-webkit-scrollbar-thumb
-		background-color: darkgrey
-		-webkit-border-radius: 10px
-		// outline: 1px solid slategrey
-
-@media (max-width: 784px)
-	.content-wrapper
-		height: calc( 100vh - 110px )
-		margin-top: 110px
-		left: 0
-		width: 100%
-@media (max-width: 414px)
-	.content-wrapper
-		height: calc( 100vh - 60px )
-		margin-top: 60px
-		left: 0
-		width: 100%
-
-.content
-	display: flex
-	flex-direction: column
-	overflow-x: hidden
-	// background: $content-background-color
-	h2
-		color: #fff
-		font-size: 2em
-
-
-.dashboard
-	// height: calc(100vh - #{$header-height}) //90vh
-	&__title
-	&__content
-		width: 100%
-		display: flex
-		flex-wrap: wrap
-		app-user-info
-			width: 100%
-			margin-bottom: 10px
-			.user-info-wrapper
-			.user-info
-				&__header
-					&-title
-						&-key
-							display: flex
-							align-items: center
-							margin-right: 10px
-						&-value
-							display: flex
-							align-items: center
-							font-size: 1.2em
-							font-weight: 700
-					&-meta
-						&-key
-							margin-right: 10px
-						&-value
-							color: green
-							&_danger
-								color: red
-							&_warning
-								color: #f6c111
-							&_success
-								color: yellowgreen
-				&__content
-					display: flex
-					min-height: 300px
-					&-item
-						padding: 10px
-						border-radius: 10px
-						background-color: #fff
-					&-chart
-						flex-grow: 1
-						height: 100%
-					&-description
-						flex-grow: 10
-						min-height: 300px
-						margin-left: 16px
-						&-item
-							margin-top: 10px
-							display: flex
-							&-key
-								font-size: 20px
-								font-weight: 600
-								width: 49%
-							&-value
-								font-size: 16px
-								font-weight: normal
-								width: 49%
-
-.profile
-	&__title
-	&__content
-		width: 100%
-		min-height: 100px
-		padding: 20px
-		background-color: transparent
-		border-radius: 5px
-		// display: flex
-		// flex-direction: column
-		// flex-wrap: wrap
-		&-item
-			display: inline-block
-			// flex-grow: 1
-			padding: 10px 0
-			margin: 8px
-			&-title
-				font-size: 20px
-				color: #fff
-@media (max-width: 414px)
-	.profile
-		&__content
-			padding-top: 0
-			display: flex
-			flex-direction: column
-			&-item
-				display: flex
-				flex-direction: column
-				align-items: center
-
-
-.settings
-	// height: calc(100vh - #{$header-height}) //90vh
-	&__title
-	&__content
-		width: 100%
-		min-height: 100px
-		padding: 20px
-		background-color: #fff
-		border-radius: 5px
-		display: flex
-		flex-direction: column
-		flex-wrap: wrap
-		&-item-wrapper
-			display: flex
-			justify-content: space-between
-			align-items: center
-			width: 230px
-		&-item
-			display: flex
-			// align-items: center
-			height: 30px
-			&__key
-			&__value
-				margin-left: 20px
-
-.users
-	// height: 90vh
-
-.error-404
-	// height: 90vh
-	justify-content: center
-	align-items: center
-	// background: #c31432
-	// background: -webkit-linear-gradient(to right, #c31432, #240b36)
-	&__icon-wrapper
-		position: relative
-		display: block
-		margin-top: 10px
-		min-width: 120px
-		height: 120px
-		text-align: center
-	&__icon
-		position: relative
-		font-size: 5em
-		z-index: 1
-		color: #fff
-
-.spinner
-	// height: 90vh
-	height: 100vh
-	justify-content: center
-	align-items: center
-	z-index: 1000
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    // width: 100%
+    // height: 100%
+    overflow: hidden
+    background: $content-background-color
 
 .header-buttons
-	margin: 10px
-	&__btn.mat-raised-button
-		margin-right: 10px
-		&:last-child
-			margin: 0
+    margin: 10px
 
-// .mat-expansion-panel
-// 	width: 100%
+    &__btn.mat-raised-button
+        margin-right: 10px
 
-.login
-	position: relative
-	width: 100vw
-	height: 100vh
-	background: $content-background-color
-	.app
-		&-name
-			position: absolute
-			top: 20%
-			left: 30%
-			transform: translateX(-50%)
-			width: 45vw
+        &:last-child
+            margin: 0
 
-			color: #fff
-			font-size: 6em
-			font-weight: 700
-			text-transform: capitalize
-		&-bg-placeholder
-			position: absolute
-			width: 70vw
-			height: 100vh
-			bottom: 0
-			left: 0
-			right: 0
-			background: url('../images/bg/app.jpg') center (center / cover) no-repeat
-			opacity: 0.1
-			box-shadow: 0 0 15px #331432, 0 0 25px #331432, 0 0 35px #331432
-	&-form-wrapper
-		position: absolute
-		right: 0
-		width: 30%
-		height: 100vh
-		background-color: #fff
-		padding: 30px
-
-app-root app-main-header .notifications-list
-	// --bg-color: rgba(27, 140, 151, 1)
+//app-root app-main-header .notifications-list
+// --bg-color: rgba(27, 140, 151, 1)

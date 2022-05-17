@@ -12,7 +12,7 @@ export interface User {
 	id?: number;
 	name?: string;
 	services: Service[];
-	username?: string;
+	username: string;
     password?: string;
     email?: string;
 	phone?: string;

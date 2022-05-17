@@ -1,32 +1,25 @@
-import {Injectable, OnInit, OnDestroy} from '@angular/core';
-import {User, UsersService} from '../modules/users/services/users.service';
-import {BehaviorSubject, Observable, ReplaySubject, Subscription} from 'rxjs';
+import {Injectable, OnDestroy} from "@angular/core";
+import {User, UsersService} from "../modules/users/services/users.service";
+import {BehaviorSubject, Observable, ReplaySubject, Subject, Subscription} from "rxjs";
 // import { AuthModule } from '../modules/auth/auth.module';
-
-import {environment} from 'src/environments/environment';
-import {Subject} from 'rxjs';
+import {environment} from "src/environments/environment";
 
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root"
 })
 export class AuthService implements OnDestroy {
+
+    static instance?: AuthService;
+    public static user: User;
 
     private userSubject: Subject<User> = new ReplaySubject<User>(1);
     public user$: Observable<User> = this.userSubject.asObservable();
 
-    static instance?: AuthService;
 
-
-    public get isLoggedIn() {
-        return this._isLoggedIn;
-    }
-
-    public static user: User;
 
     private users!: User[];
     private usersSub!: Subscription;
-    private _isLoggedIn: boolean = false;
 
     private loggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public loggedIn$: Observable<boolean> = this.loggedInSubject.asObservable();
@@ -34,7 +27,7 @@ export class AuthService implements OnDestroy {
 
     constructor(private usersService: UsersService) {
         if (AuthService.instance !== undefined) {
-            throw new Error('Import AuthModule only once.');
+            throw new Error("Import AuthModule only once.");
         }
 
         AuthService.instance = this;
@@ -51,7 +44,7 @@ export class AuthService implements OnDestroy {
     }
 
     public login(user: User): User | null {
-        const currUser: User = this.findUserByUsername(user.username!);
+        const currUser: User | null = this.findUserByUsername(user.username);
         if (currUser) {
             // this._isLoggedIn = true;
             // this.loggedInSubject.next(true);
@@ -61,10 +54,10 @@ export class AuthService implements OnDestroy {
             // const salt = bcrypt.genSaltSync(10);
             // const token = bcrypt.hashSync(environment.secret, environment.salt);
             const token = btoa(environment.secret);
-            sessionStorage.setItem('token', token);
+            sessionStorage.setItem("token", token);
 
-            const user = btoa(JSON.stringify(currUser));
-            sessionStorage.setItem('user', user);
+            const tempUser = btoa(JSON.stringify(currUser));
+            sessionStorage.setItem("user", tempUser);
 
             // const role = btoa(environment.secret);
             // sessionStorage.setItem('role', role);
@@ -78,8 +71,8 @@ export class AuthService implements OnDestroy {
     public logout(): boolean {
         // this._isLoggedIn = false;
         // this.loggedInSubject.next(false);
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('user');
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user");
         // sessionStorage.removeItem('role');
         return true;
     }
@@ -96,16 +89,16 @@ export class AuthService implements OnDestroy {
         }
     }
 
-    private findUserByUsername(username: string): User {
-        const user: User = this.users.find(u => u.username === username)!;
+    private findUserByUsername(username: string): User | null {
+        const user: User | undefined = this.users.find(u => u.username === username);
 
-        return user;
+        return user ? user : null;
     }
 
 }
 
 
 export enum Role {
-    admin = 'admin',
-    user = 'user'
+    admin = "admin",
+    user = "user"
 }

@@ -1,45 +1,44 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartType } from 'chart.js';
-import { Observable } from 'rxjs';
-import { ChartConfiguration, ChartManagerService, CustomChartData } from '../../services/chart-manager.service';
-
+import {Component, Input, OnInit} from "@angular/core";
+import * as Chart from "chart.js";
+import {ChartType} from "chart.js";
+import {Observable} from "rxjs";
+import {ChartConfiguration, ChartManagerService, CustomChartData} from "../../services/chart-manager.service";
 
 
 @Component({
-	selector: 'app-chart-wrapper',
-	templateUrl: './chart-wrapper.component.html',
-	styleUrls: ['./chart-wrapper.component.sass']
+    selector: "app-chart-wrapper",
+    templateUrl: "./chart-wrapper.component.html",
+    styleUrls: ["./chart-wrapper.component.sass"]
 })
 export class ChartWrapperComponent implements OnInit {
 
-	@Input() userId!: number;
-	@Input() serviceId?: number;
+    @Input() userId!: number;
+    @Input() serviceId?: number;
 
-	public data: CustomChartData = [[], []];
-	public chartType: ChartType = 'doughnut';
-	public configs!: ChartConfiguration;
-
-
-
-	constructor(private chartService: ChartManagerService,) { }
-
-	ngOnInit(): void {
-		Chart.defaults.global.tooltips.enabled = false;
-		this.configs = this.getChartConfig();
-		this.getChartDataObservable()
-			.subscribe((data: CustomChartData) => {
-				this.configs.data = data;
-			});
-	}
+    public data: CustomChartData = [[], []];
+    public chartType: ChartType = "doughnut";
+    public configs!: ChartConfiguration;
 
 
-	private getChartConfig(): ChartConfiguration {
-		return this.chartService.getChartConfiguration(this.chartType, this.userId, this.serviceId);
-	}
+    constructor(private chartService: ChartManagerService,) {
+    }
 
-	private getChartDataObservable(): Observable<CustomChartData> {
-		return this.chartService.getChartData(this.userId, this.serviceId);
-	}
+    ngOnInit(): void {
+        Chart.defaults.global.tooltips.enabled = false;
+        this.configs = this.getChartConfig();
+        this.getChartDataObservable()
+        .subscribe((data: CustomChartData) => {
+            this.configs.data = data;
+        });
+    }
+
+
+    private getChartConfig(): ChartConfiguration {
+        return this.chartService.getChartConfiguration(this.chartType, this.userId, this.serviceId);
+    }
+
+    private getChartDataObservable(): Observable<CustomChartData> {
+        return this.chartService.getChartData(this.userId, this.serviceId);
+    }
 
 }

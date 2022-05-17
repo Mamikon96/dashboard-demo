@@ -1,0 +1,59 @@
+.dashboard
+	// height: calc(100vh - #{$header-height}) //90vh
+	//&__title
+	&__content
+		width: 100%
+		display: flex
+		flex-wrap: wrap
+		app-user-info
+			width: 100%
+			margin-bottom: 10px
+			//.user-info-wrapper
+			.user-info
+				&__header
+					&-title
+						&-key
+							display: flex
+							align-items: center
+							margin-right: 10px
+						&-value
+							display: flex
+							align-items: center
+							font-size: 1.2em
+							font-weight: 700
+					&-meta
+						&-key
+							margin-right: 10px
+						&-value
+							color: green
+							&_danger
+								color: red
+							&_warning
+								color: #f6c111
+							&_success
+								color: yellowgreen
+				&__content
+					display: flex
+					min-height: 300px
+					&-item
+						padding: 10px
+						border-radius: 10px
+						background-color: #fff
+					&-chart
+						flex-grow: 1
+						height: 100%
+					&-description
+						flex-grow: 10
+						min-height: 300px
+						margin-left: 16px
+						&-item
+							margin-top: 10px
+							display: flex
+							&-key
+								font-size: 20px
+								font-weight: 600
+								width: 49%
+							&-value
+								font-size: 16px
+								font-weight: normal
+								width: 49%

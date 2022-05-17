@@ -1,0 +1,43 @@
+.content-wrapper
+	position: absolute
+	// top: $header-height
+	top: 0
+
+	// left: $content-position-left
+	// left: 6vw
+	left: 10%
+
+	// width: $content-width
+	// width: 94vw
+	width: 90%
+
+	// height: 90vh
+	height: calc( 100vh - 60px )
+	// padding: 12vh 3vw 2vh 13vw
+	margin-top: 60px
+	// margin-left: 90px
+	padding: 10px
+	overflow-y: scroll
+	&::-webkit-scrollbar
+		width: 10px
+	&::-webkit-scrollbar-track
+		-webkit-border-top-right-radius: 10px
+		-webkit-border-bottom-right-radius: 10px
+	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+	&::-webkit-scrollbar-thumb
+		background-color: darkgrey
+		-webkit-border-radius: 10px
+// outline: 1px solid slategrey
+
+@media (max-width: 784px)
+	.content-wrapper
+		height: calc( 100vh - 110px )
+		margin-top: 110px
+		left: 0
+		width: 100%
+@media (max-width: 414px)
+	.content-wrapper
+		height: calc( 100vh - 60px )
+		margin-top: 60px
+		left: 0
+		width: 100%
